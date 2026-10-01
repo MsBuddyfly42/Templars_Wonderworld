@@ -1,0 +1,11 @@
+TEMPLAR’S BRAND BUILDER COLLECTION
+
+Choose Extract All, open the resulting folder, and double-click any .html file. Each activity works offline in a modern browser. Notes save in that browser on that computer; use the Download buttons for backup.
+
+Help_Desk_Practice_Lab.html — 12 support tickets
+S3LFMADE_Business_Simulator.html — 10 fictional client scenarios
+Mythology_and_Fairy_Tale_Shelf.html — 12 original short tales
+Family_Talent_Show_Kit.html — 20 performance challenges
+Coding_Bug_Hunt.html — 15 code puzzles
+
+These are personal practice materials. The Business Simulator does not open orders or send messages.

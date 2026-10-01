@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PlayLab — Colorful Coding Playground</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <div class="brand">🎨 <b>PlayLab</b><span>click • build • break • learn</span></div>
+  <nav>
+    <button data-view="home" class="active">Home</button>
+    <button data-view="lab">UI Lab</button>
+    <button data-view="games">Games</button>
+    <button data-view="notes">Notes</button>
+  </nav>
+  <button id="surprise">🎉 Surprise Me</button>
+</header>
+
+<main>
+<section id="home" class="view show">
+  <div class="hero">
+    <div>
+      <span class="pill">YOUR NO-PRESSURE CODING PLAYGROUND</span>
+      <h1>Make something weird.<br><em>Then make it better.</em></h1>
+      <p>Click everything. Change colors. Build cards. Doodle. Save ideas. Play mini-games. Then open the code and tinker with it.</p>
+      <button class="primary jump" data-target="lab">Start Playing</button>
+      <button id="ideaBtn">Give me an idea</button>
+      <div id="idea">Try this: make a button that looks way too dramatic.</div>
+    </div>
+    <div class="window">
+      <div class="dots">● ● ●</div>
+      <h3>Today's vibe</h3>
+      <div class="chips"><button>🌈 colorful</button><button>⚡ bold</button><button>✨ glossy</button></div>
+      <label>Curiosity <b id="curiosityLabel">72%</b><input id="curiosity" type="range" min="0" max="100" value="72"></label>
+      <div id="vibe">🌈</div>
+    </div>
+  </div>
+  <div class="cards">
+    <article class="pink"><h2>🎨 Theme Mixer</h2><p>Change the whole website mood in one click.</p><button class="jump" data-target="lab">Mix colors</button></article>
+    <article class="blue"><h2>🧠 Memory Game</h2><p>Flip cards and beat your best score.</p><button class="jump" data-target="games">Play now</button></article>
+    <article class="yellow"><h2>📝 Sticky Wall</h2><p>Save random ideas in your browser.</p><button class="jump" data-target="notes">Write something</button></article>
+  </div>
+</section>
+
+<section id="lab" class="view">
+  <h1>UI Lab 🧪</h1><p class="lead">Build silly little things and see what happens.</p>
+  <div class="grid">
+    <article class="panel">
+      <h2>Theme Mixer</h2>
+      <div class="themes">
+        <button data-theme="purple">💜</button><button data-theme="citrus">🍊</button>
+        <button data-theme="ocean">🌊</button><button data-theme="candy">🍬</button><button data-theme="night">🌙</button>
+      </div>
+      <p>Your choice is saved in this browser.</p>
+    </article>
+    <article class="panel">
+      <h2>Button Factory</h2>
+      <label>Text<input id="btnText" value="CLICK THE DRAMA"></label>
+      <label>Roundness<input id="radius" type="range" min="0" max="40" value="18"></label>
+      <label>Shadow<input id="shadow" type="range" min="0" max="30" value="16"></label>
+      <div class="preview"><button id="madeBtn" class="primary">CLICK THE DRAMA</button></div>
+      <pre id="code"></pre>
+    </article>
+    <article class="panel wide">
+      <h2>Card Builder</h2>
+      <div class="row"><input id="cardTitle" value="My Cool Idea"><input id="cardEmoji" value="🚀"><button id="addCard" class="primary">Add Card</button></div>
+      <div id="cardStage" class="card-stage"></div>
+    </article>
+    <article class="panel wide">
+      <h2>Doodle Pad</h2>
+      <div class="row"><input id="pen" type="color" value="#7c3aed"><button id="clearCanvas">Clear</button></div>
+      <canvas id="doodle" width="1000" height="300"></canvas>
+    </article>
+  </div>
+</section>
+
+<section id="games" class="view">
+  <h1>Mini Games 🎮</h1>
+  <div class="grid">
+    <article class="panel">
+      <h2>Reaction Test</h2>
+      <div id="reactionBox" class="reaction">Click Start</div>
+      <button id="reactionStart" class="primary">Start</button>
+      <p id="reactionBest"></p>
+    </article>
+    <article class="panel">
+      <h2>Tiny Typing Test</h2>
+      <p id="phrase" class="phrase">Colorful code is still code.</p>
+      <textarea id="typing" rows="4" placeholder="Type the phrase here..."></textarea>
+      <p id="typingScore">0 characters</p>
+      <button id="newPhrase">New phrase</button>
+    </article>
+    <article class="panel wide">
+      <h2>Memory Match</h2>
+      <div id="memory" class="memory"></div>
+      <p><span id="moves">Moves: 0</span> · <span id="memoryBest">Best: —</span></p>
+      <button id="resetMemory">Shuffle & Restart</button>
+    </article>
+  </div>
+</section>
+
+<section id="notes" class="view">
+  <h1>Sticky Wall 📝</h1>
+  <div class="row"><input id="noteText" placeholder="Write an idea, lyric, practice goal..."><select id="noteColor"><option>yellow</option><option>pink</option><option>blue</option><option>green</option><option>purple</option></select><button id="addNote" class="primary">Add Sticky</button></div>
+  <div id="wall" class="wall"></div>
+</section>
+</main>
+
+<footer>PlayLab · Made for experimenting, not being perfect. <button id="resetAll">Reset Playground</button></footer>
+<div id="toast"></div>
+<script src="app.js"></script>
+</body></html>

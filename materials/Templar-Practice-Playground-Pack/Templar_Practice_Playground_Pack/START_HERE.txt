@@ -1,0 +1,22 @@
+TEMPLAR'S PRACTICE PLAYGROUND PACK
+
+1. PlayLab_Colorful_Web_Playground.zip
+   Unzip and open index.html. This is your colorful HTML/CSS/JavaScript playground.
+
+2. Word_Practice_Lab.docx
+   Hands-on Word exercises: formatting, styles, tables, page layout, letters, resume bullets, and more.
+
+3. Excel_Practice_Playground.xlsx
+   Six practice sheets: Dashboard, Client Tracker, Invoice Practice, Formula Lab, Data Cleaning, Challenges.
+
+4. PowerPoint_Practice_Playground.pptx
+   Twelve editable practice slides with typography, shapes, layouts, images, charts, timeline, animation planning, and redesign exercises.
+
+5. Access_Practice_Kit.zip
+   Access-ready CSV tables, SQL queries, a relational SQLite reference database, and step-by-step import instructions.
+   Create the final .accdb yourself in Microsoft Access as part of the practice exercise.
+
+6. Microsoft_Office_Practice_Playground_Guidebook.docx
+   Your main learning guide for Word, Excel, PowerPoint, Access, and the PlayLab website.
+
+RULE: These are playground files. Save copies, change them, break them, undo changes, and rebuild them.

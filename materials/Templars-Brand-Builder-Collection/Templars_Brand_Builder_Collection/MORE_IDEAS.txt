@@ -1,0 +1,12 @@
+FUTURE IDEAS FOR TEMPLAR
+
+1. A portfolio project planner with milestones and screenshots.
+2. An offline resume and cover-letter practice studio.
+3. A family oral-history recorder and interview question bank.
+4. A singing setlist planner with rehearsal notes.
+5. A mock interview game for office and help desk jobs.
+6. A website accessibility scavenger hunt.
+7. A business expense and pricing practice workbook.
+8. A holiday memory book that exports family stories.
+9. A Python puzzle arcade.
+10. A children’s fairy-tale maker with printable pages.
