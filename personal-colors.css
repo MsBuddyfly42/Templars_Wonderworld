@@ -1,0 +1,28 @@
+
+/* Wonderworld personal edition: bright, welcoming colors. */
+:root{--ink:#25204c;--purple:#6836c9;--bg:#fff7ee;--muted:#5d5872;--line:#dfd3ed}
+body{background:radial-gradient(ellipse at 90% 0%,#ffe0ef 0,transparent 42%),radial-gradient(ellipse at 0% 45%,#d7f8ef 0,transparent 45%),#fff7ee}
+header{background:linear-gradient(105deg,#fff1be,#ffe6f3 52%,#ddf5ff);border-bottom:3px solid #dec5fa}
+.mark{background:linear-gradient(145deg,#833de0,#b42f88);box-shadow:4px 4px 0 #ffcb58}
+aside{background:linear-gradient(180deg,#fbf2ff,#eafaff)}
+nav a.active{background:#ded0ff;color:#47209c;box-shadow:inset 4px 0 #9f3ee0}
+nav a:hover{background:#f9dcf1}
+.welcome{padding:25px;border-radius:25px;background:linear-gradient(120deg,#ffe8a9,#ffdeec 55%,#e2dcff);border:2px solid #fff;box-shadow:0 8px 24px #8258ab12}
+.welcome .eyebrow{color:#75522a}.welcome .sun{color:#ad5d00}
+.banner{background:linear-gradient(120deg,#6131af,#9b2785 62%,#a63550);box-shadow:0 10px 24px #7c329323}
+.banner p,.banner .eyebrow{color:#fff4fd}.banner .actions a{white-space:normal}
+.worldcard{border:2px solid #ead8f0;box-shadow:0 5px 0 #e1d4ea55}
+.worldcard:nth-child(4n+1) .cardtop{background:linear-gradient(135deg,#dbc5ff,#f7d2ff)}
+.worldcard:nth-child(4n+2) .cardtop{background:linear-gradient(135deg,#ffc4da,#ffe3a8)}
+.worldcard:nth-child(4n+3) .cardtop{background:linear-gradient(135deg,#a8ebd9,#d8f6c4)}
+.worldcard:nth-child(4n) .cardtop{background:linear-gradient(135deg,#bbddff,#d6ccff)}
+.resource{border-top:5px solid #a743bc}.resource:nth-child(3n+2){border-top-color:#178273}.resource:nth-child(3n){border-top-color:#b56819}
+.button{background:linear-gradient(125deg,#6836c9,#942da1)}.button.secondary{background:#eadeff;color:#4a258a}
+.continue-panel,.lesson-navigation{background:#fff4cb;border:1px solid #e8cc81}
+.reader{border-top:5px solid #c07821}.aside-note{background:#fff0b5}.hubnav{padding:12px;border-radius:18px;background:#fff3c6}.hubnav a{background:#efe2ff;color:#4b237e}.hubnav button{background:#7039c4;color:white}
+.deck{border:2px solid #dfc6ec;border-top:6px solid #a94fb8;background:linear-gradient(155deg,#fff,#fff0f7)}
+.deck:nth-child(3n+2){border-top-color:#208477;background:linear-gradient(155deg,#fff,#e4faf2)}
+.deck:nth-child(3n){border-top-color:#be791b;background:linear-gradient(155deg,#fff,#fff3cc)}
+.playbox{border:2px solid #ddc6ee;background:#fffefa}.stamp{background:linear-gradient(120deg,#fff3c6,#ffe7ef);border:2px solid #e6c3e0}.feedback{color:#302344}
+@media(max-width:650px){.welcome{padding:18px}.banner{padding:20px}.banner .actions{width:100%}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
