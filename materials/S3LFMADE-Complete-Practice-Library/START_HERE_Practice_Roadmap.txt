@@ -1,0 +1,31 @@
+S3LFM@DE SOLUTIONS - PRACTICE ROADMAP
+
+This library is for PRACTICE. It does not touch your live business website.
+
+ROUND 1 - DESIGN REFRESH
+Pick any Word sample. Change only fonts, colors, borders, spacing and alignment.
+Save your version as V2.
+
+ROUND 2 - REBUILD
+Choose one sample and recreate it from a blank document without looking at the original until the end.
+
+ROUND 3 - THREE STYLES
+Make the same project Elegant, Classic, Modern, and Fun/Colorful.
+
+ROUND 4 - HTML/CSS
+Open an HTML_CSS_Practice folder.
+Edit styles.css first. Refresh index.html in your browser after every few changes.
+Then change the HTML structure.
+
+ROUND 5 - CLIENT CHALLENGE
+Pretend a client gave you the brief. Set a 45-minute timer and finish a usable first draft.
+
+ROUND 6 - SELF REVIEW
+Check: hierarchy, alignment, spacing, readability, consistency, contrast, spelling, and whether the design fits the audience.
+
+KEEP:
+Original
+Your V1
+Your V2
+Final
+This lets you see your progress.

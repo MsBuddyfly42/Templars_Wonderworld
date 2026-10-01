@@ -1,0 +1,9 @@
+CustomerID,FirstName,LastName,Email,Phone,City,State,DateJoined
+1,Amelia,Carter,amelia.carter@example.com,870-555-0101,Jonesboro,AR,2026-08-15
+2,Marcus,Green,marcus.green@example.com,870-555-0102,Little Rock,AR,2026-08-20
+3,Sofia,Lopez,sofia.lopez@example.com,870-555-0103,Pine Bluff,AR,2026-08-28
+4,Derrick,White,derrick.white@example.com,870-555-0104,Forrest City,AR,2026-09-01
+5,Nina,Brooks,nina.brooks@example.com,870-555-0105,West Memphis,AR,2026-09-04
+6,Caleb,King,caleb.king@example.com,870-555-0106,Helena,AR,2026-09-08
+7,Maya,Scott,maya.scott@example.com,870-555-0107,Conway,AR,2026-09-12
+8,Jordan,Reed,jordan.reed@example.com,870-555-0108,Blytheville,AR,2026-09-18

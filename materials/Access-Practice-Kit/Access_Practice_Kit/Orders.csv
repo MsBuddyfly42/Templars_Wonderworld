@@ -1,0 +1,13 @@
+OrderID,CustomerID,ServiceID,OrderDate,DueDate,Status,QuotedAmount,Notes
+1001,1,1,2026-09-01,2026-09-15,Completed,850,Five-page starter site
+1002,2,2,2026-09-03,2026-09-08,Completed,120,Front and back card
+1003,3,4,2026-09-08,2026-09-20,In Progress,275,Three platform starter content
+1004,1,6,2026-09-10,2026-09-18,Review,225,Research summary
+1005,4,3,2026-09-11,2026-09-16,Completed,180,Resume and cover letter
+1006,5,5,2026-09-13,2026-10-01,Open,350,Birthday planning support
+1007,6,7,2026-09-15,2026-09-22,In Progress,200,File organization
+1008,7,1,2026-09-18,2026-10-04,Open,950,Website with gallery
+1009,8,8,2026-09-20,2026-10-10,Open,300,Special occasion vocal
+1010,3,2,2026-09-22,2026-09-28,Review,145,Card plus QR code
+1011,2,6,2026-09-24,2026-10-02,Open,250,Competitor research
+1012,5,4,2026-09-25,2026-10-07,In Progress,325,Social media refresh
