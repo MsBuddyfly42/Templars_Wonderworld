@@ -1,0 +1,8 @@
+Base: Complete package. Honeybrook-only files: none; all preserved.
+History: 10 wings and 100 chapters preserved.
+Added 10 classroom assignments (200 questions) to the 40 existing assignments.
+History themes: learning quizzes, word searches, memory matching, Family Game Night (all five modes), Boredom Breaker, Brainwave category board/letter wheel/word clues/final, Mythic Escape Room.
+Number-only Sudoku, physical reaction timing, software connector recognition and price guessing retain their original subjects. They do not have meaningful historical question content.
+History Game Night provides four additional formats.
+Browser scores remain local; existing saved scores do not transfer automatically to a new hosting origin.
+Validation: all JavaScript syntax checked; all catalog destinations exist; 50 assignments/1,000 question schemas checked. Full browser click-through test unavailable in this workspace. Original printable classroom sheets cover the original 40 assignments; history chapters and activities are in History House.

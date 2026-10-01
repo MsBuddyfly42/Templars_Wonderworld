@@ -1,0 +1,44 @@
+TEMPLAR’S WONDERWORLD COMPLETE PERSONAL DOWNLOAD
+
+Save and open on Windows
+
+1. Download Templars-Wonderworld-Complete.zip.
+2. Open File Explorer.
+3. Click Downloads.
+4. Right-click Templars-Wonderworld-Complete.zip.
+5. Click Extract All.
+6. Click Browse if you want to choose Documents as the destination.
+7. Click Extract.
+8. Open the extracted Templars-Wonderworld folder.
+9. Double-click index.html.
+10. Choose Chrome or Edge if Windows asks which program to use.
+
+Checkpoint: Templar’s Wonderworld home opens. You can enter the Office
+classrooms, play the Classroom Challenge, or open your reading shelves.
+
+Keep the entire extracted folder together. Open index.html from the
+extracted folder, not from inside the ZIP.
+
+Included
+
+224 resources: books, original classroom materials, practice files, puzzles,
+learning activities, the six Honeybrook storybooks, and their combined ZIP.
+The Classroom Challenge has 40 assignments and 800 questions.
+The Office classrooms have 30 assignments with 120 multiple-choice questions
+and 30 selectable strategy puzzles, plus the downloadable Word workbook.
+
+Saving progress
+
+This personal copy saves progress and scores in the browser on this computer.
+It does not sync or import scores from the online Wonderworld account.
+Use the same browser and keep the folder in the same location. Clearing
+browser data can remove saved progress. Private browsing or some browser
+settings can prevent saving; save failures are shown on the page.
+
+The Classroom Challenge has Export scores backup and Import scores backup
+under My report card. Save a backup before switching browsers or computers.
+
+The portal and included learning activities can open without hosting or a
+login. External links, optional web fonts, and externally linked media need
+internet access. Some original project packages have their own setup steps.
+No account credentials or private saved scores are included in this download.

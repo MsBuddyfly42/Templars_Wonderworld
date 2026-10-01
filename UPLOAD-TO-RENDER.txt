@@ -1,0 +1,2 @@
+Extract this ZIP. Upload the contents of the Templars-Wonderworld folder to a GitHub repository (index.html at repository root). Connect the repository as a Render Static Site. Publish directory: .
+This package is not deployed yet.

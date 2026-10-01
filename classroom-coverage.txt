@@ -1,0 +1,46 @@
+CLASSROOM COVERAGE
+
+40 assignments, 800 multiple-choice questions. Each assignment reviews five learning objectives through vocabulary, concept explanations, applied situations, and verification checks. These are review games rather than a certification examination.
+
+01 — How a Web Page Is Built — Coding — related original resource IDs: 107
+02 — Links, Images, and Sections — Coding — related original resource IDs: 107
+03 — Make It Yours with CSS — Coding — related original resource IDs: 107
+04 — Add a Working Button — Coding — related original resource IDs: 107
+05 — Tiny Quote Calculator — Coding — related original resource IDs: 107
+06 — Page Foundation — Coding — related original resource IDs: 108
+07 — Connect the Visual Design — Coding — related original resource IDs: 108
+08 — Founder Story — Coding — related original resource IDs: 108
+09 — All Service Categories — Coding — related original resource IDs: 108
+10 — Style Service Cards — Coding — related original resource IDs: 108
+11 — Sample Portfolio — Coding — related original resource IDs: 108
+12 — First Site Script — Coding — related original resource IDs: 108
+13 — Contact Information Safely — Coding — related original resource IDs: 108
+14 — Comfortable Phone Layout — Coding — related original resource IDs: 108
+15 — Founder Image and Description — Coding — related original resource IDs: 108
+16 — Accessibility and Navigation — Coding — related original resource IDs: 108
+17 — What a Real Form Needs — Coding — related original resource IDs: 108
+18 — Handle a Practice Form — Coding — related original resource IDs: 108
+19 — Test and Debug — Coding — related original resource IDs: 108
+20 — Back Up and Publish Safely — Coding — related original resource IDs: 108
+21 — Website Design: Morning Table — Service Skills — related original resource IDs: 111,106,109,110
+22 — Branding & Creative — Service Skills — related original resource IDs: 111,109,110,112
+23 — Business Tools — Service Skills — related original resource IDs: 111,109,110,112
+24 — Career & Office — Service Skills — related original resource IDs: 111,110,112
+25 — Research & Writing — Service Skills — related original resource IDs: 111,109,110,112
+26 — Clerical Support — Service Skills — related original resource IDs: 111,109,110,112
+27 — Event Planning — Service Skills — related original resource IDs: 111,109,110,112
+28 — Social Media & Digital Support — Service Skills — related original resource IDs: 111,109,110,112
+29 — Business Cards — Service Skills — related original resource IDs: 111,109,110,112
+30 — Vocal & Special Occasion Services — Service Skills — related original resource IDs: 111,109,110,112
+31 — Microsoft Word — Office — related original resource IDs: 6,112
+32 — Microsoft Excel — Office — related original resource IDs: 6,112
+33 — Microsoft PowerPoint — Office — related original resource IDs: 6,112
+34 — Microsoft Access — Office — related original resource IDs: 6,112
+35 — Help Desk Troubleshooting — Technology — related original resource IDs: 112
+36 — Python Refresher — Technology — related original resource IDs: 112
+37 — Backend & Account Basics — Technology — related original resource IDs: 113
+38 — Databases & Records — Technology — related original resource IDs: 113,6
+39 — Practice Payments & Security — Technology — related original resource IDs: 113,112
+40 — Hosting, Files & Safe Maintenance — Technology — related original resource IDs: 113,108
+
+The original classroom documents, service labs, study manuals, and website workbook remain available unchanged. The quiz collection covers their major subjects; it does not replace every hands-on exercise or test every paragraph. Advanced website-workbook review is grouped into assignments 37–40.
