@@ -1,0 +1,20 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Brand &amp; Logo Brief | S3LFM@DE Practice Lab</title><link rel="stylesheet" href="../assets/styles.css"></head><body>
+<div class="topbar"><div class="brand">S3LFM<span>@</span>DE Solutions • Practice Lab</div><a href="../index.html">← Practice Dashboard</a></div>
+<main class="shell"><div class="hero"><span class="badge">Branding</span><h1>Brand &amp; Logo Brief</h1><p>Type your own practice information, test the fields, preview it, save it, reset it, and try again.</p></div>
+<div class="notice"><b>Practice copy:</b> Nothing on this page sends to your live business website.</div>
+<div class="panel"><h2 class="section-title">Practice Form</h2><p class="hint">Fields with * are required.</p><form id="practiceForm" novalidate><div class="formgrid"><div class="field"><label for="brand">Brand Name *</label><input id="brand" name="brand" required data-minlen="3" type="text"><div class="field-msg"></div></div>
+<div class="field"><label for="tagline">Tagline</label><input id="tagline" name="tagline" type="text"><div class="field-msg"></div></div>
+<div class="field"><label for="audience">Ideal Audience *</label><textarea id="audience" name="audience" required data-minlen="25"></textarea><div class="field-msg"></div></div>
+<div class="field"><label for="personality">Brand Personality *</label><textarea id="personality" name="personality" required data-minlen="20"></textarea><div class="field-msg"></div></div>
+<div class="field"><label for="colors">Preferred Colors *</label><input id="colors" name="colors" required data-minlen="3" type="text"><div class="field-msg"></div></div>
+<div class="field"><label for="avoid">What to Avoid</label><textarea id="avoid" name="avoid"></textarea><div class="field-msg"></div></div>
+<div class="field"><label for="uses">Where the Brand Will Be Used *</label><textarea id="uses" name="uses" required data-minlen="20"></textarea><div class="field-msg"></div></div></div><div class="btnrow"><button class="btn" type="button" id="check">Check My Work</button><button class="btn gold" type="button" id="previewBtn">Build Preview</button><button class="btn secondary" type="button" id="sample">Load Sample</button><button class="btn secondary" type="button" id="save">Save Draft</button><button class="btn secondary" type="button" id="load">Load Draft</button><button class="btn danger" type="reset">Reset</button></div></form><div class="status"></div></div>
+<div class="panel"><h2 class="section-title">Live Preview</h2><div id="preview" class="preview">Your preview will appear here.</div></div></main><div class="footer">S3LFM@DE Solutions • Interactive practice only</div>
+<script src="../assets/common.js"></script><script>
+const form=Lab.$('#practiceForm'),preview=Lab.$('#preview'),sample={"brand": "Evergreen Lane Events", "tagline": "Moments Made Meaningful", "audience": "Adults planning birthdays, anniversaries, intimate dinners, showers, and small community celebrations.", "personality": "Warm, refined, welcoming, dependable, detail-focused, and memorable.", "colors": "Deep green, champagne, cream", "avoid": "Neon colors, overly playful fonts, crowded layouts.", "uses": "Website, social media, business cards, event signage, invoices, and printed materials."};
+Lab.$('#check').onclick=()=>Lab.validateForm(form);
+Lab.$('#previewBtn').onclick=()=>{if(!Lab.validateForm(form))return;const d=Lab.formData(form);let extra='';preview.textContent=Object.entries(d).filter(([k,v])=>String(v).trim()).map(([k,v])=>k.replace(/([A-Z])/g,' $1').replace(/^./,c=>c.toUpperCase())+': '+v).join('\n\n')+extra;};
+Lab.$('#sample').onclick=()=>{Object.entries(sample).forEach(([k,v])=>{const e=form.elements[k];if(e)e.value=v;});Lab.validateForm(form);};
+Lab.$('#save').onclick=()=>Lab.save(form,'s3lfmade-brand-logo-brief');Lab.$('#load').onclick=()=>Lab.load(form,'s3lfmade-brand-logo-brief');
+form.addEventListener('reset',()=>setTimeout(()=>{Lab.clearValidation(form);preview.textContent='Your preview will appear here.';},0));
+</script></body></html>

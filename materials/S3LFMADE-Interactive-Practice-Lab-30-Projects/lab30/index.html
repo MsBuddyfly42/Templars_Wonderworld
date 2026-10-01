@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>S3LFM@DE Solutions | Interactive Practice Lab</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div>
+      <p class="eyebrow">S3LFM@DE SOLUTIONS</p>
+      <h1>Interactive Practice Lab</h1>
+      <p class="subtitle">30 hands-on projects • Practice it. Test it. Fix it. Perfect it.</p>
+    </div>
+    <div class="hero-badge">SAFE PRACTICE<br><strong>NOT LIVE</strong></div>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <h2>Practice Projects</h2>
+      <p class="small">Choose from 30 projects, fill in the fields, press the buttons, and test your work like a real workflow.</p>
+      <nav id="projectNav" class="project-nav" aria-label="Practice projects"></nav>
+      <div class="tip-box">
+        <strong>Practice Rule</strong>
+        <p>Keep this folder separate from your real business website. Break things here on purpose—that is how you learn.</p>
+      </div>
+    </aside>
+
+    <section class="workspace">
+      <div class="workspace-head">
+        <div>
+          <p class="eyebrow" id="projectCode">S3L-LAB-001</p>
+          <h2 id="projectTitle">Resume Practice</h2>
+          <p id="projectDescription">Fill out the form and test required fields.</p>
+        </div>
+        <div class="status-pill" id="draftStatus">Draft not saved</div>
+      </div>
+
+      <div class="toolbar">
+        <button id="loadSampleBtn" type="button">Load Sample</button>
+        <button id="checkBtn" class="primary" type="button">Check My Work</button>
+        <button id="previewBtn" type="button">Preview</button>
+        <button id="saveBtn" type="button">Save Draft</button>
+        <button id="resetBtn" class="danger" type="button">Reset</button>
+      </div>
+
+      <div class="progress-wrap" aria-label="completion progress">
+        <div class="progress-bar"><div id="progressFill"></div></div>
+        <span id="progressText">0% complete</span>
+      </div>
+
+      <div class="content-grid">
+        <section class="panel">
+          <h3>Practice Form</h3>
+          <form id="practiceForm" novalidate></form>
+        </section>
+
+        <section class="panel results-panel">
+          <h3>Test Results</h3>
+          <div id="results" class="empty-state">
+            Fill in some fields, then press <strong>Check My Work</strong>.
+          </div>
+        </section>
+      </div>
+
+      <section class="panel preview-panel">
+        <div class="preview-head">
+          <h3>Live Preview</h3>
+          <span class="small">Updates when you press Preview</span>
+        </div>
+        <div id="preview" class="preview empty-state">Your formatted preview will appear here.</div>
+      </section>
+    </section>
+  </main>
+
+  <footer>
+    S3LFM@DE Solutions • Interactive Practice Lab • For learning and portfolio practice
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

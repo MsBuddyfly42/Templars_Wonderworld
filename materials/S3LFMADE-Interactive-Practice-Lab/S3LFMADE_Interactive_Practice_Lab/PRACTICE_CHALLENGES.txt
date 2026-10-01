@@ -1,0 +1,29 @@
+S3LFM@DE PRACTICE CHALLENGES
+
+BEGINNER
+1. Change one label on a form.
+2. Change one placeholder.
+3. Make an optional field required.
+4. Change the burgundy color in assets/styles.css.
+5. Add one choice to a dropdown.
+
+VALIDATION
+6. Type a bad email and fix it.
+7. Type only 5 phone digits and fix it.
+8. Leave every required field empty and identify each error.
+9. Change a minimum number in the HTML and test the new rule.
+10. Add data-minwords="30" to a textarea and test it.
+
+JAVASCRIPT
+11. Change the success message in assets/common.js.
+12. Add a new button that fills one field automatically.
+13. Change how the preview is formatted.
+14. In Invoice Builder, add a tax field to the math.
+15. In Project Tracker, show “PAID” when balance reaches $0.
+
+REAL-WORLD PRACTICE
+16. Build a fake customer order from start to finish.
+17. Enter 5 bookkeeping rows and download the CSV.
+18. Create a complete resume using your own fake practice person.
+19. Create a church program and a memorial program without loading sample data.
+20. Duplicate a page and turn it into a brand-new service form.

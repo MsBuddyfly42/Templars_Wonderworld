@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>S3LFM@DE Coding Playground</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#home">S3LFM@DE <span>Playground</span></a>
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="#services">Services</a>
+      <a href="#estimator">Estimator</a>
+      <a href="#notes">Practice Notes</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button id="themeToggle" class="btn ghost" type="button">Dark mode</button>
+  </header>
+
+  <main>
+    <section id="home" class="hero section">
+      <div>
+        <p class="eyebrow">Practice website</p>
+        <h1>Build it. Break it. Fix it. Learn it.</h1>
+        <p class="lead">A safe little website you can edit without touching your real business site.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#estimator">Try the estimator</a>
+          <button id="surpriseBtn" class="btn secondary" type="button">Surprise me</button>
+        </div>
+        <p id="surpriseMessage" class="status" aria-live="polite"></p>
+      </div>
+      <div class="code-card" aria-label="Practice idea">
+        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+        <pre><code>&lt;!-- Change me first --&gt;
+&lt;h1&gt;Your next idea&lt;/h1&gt;
+&lt;p&gt;Then make it yours.&lt;/p&gt;</code></pre>
+      </div>
+    </section>
+
+    <section id="services" class="section">
+      <div class="section-heading">
+        <p class="eyebrow">HTML + CSS practice</p>
+        <h2>Service Cards</h2>
+        <p>Edit the titles, descriptions, prices, icons, borders, spacing, and hover effects.</p>
+      </div>
+      <div class="card-grid">
+        <article class="service-card">
+          <div class="icon">💻</div>
+          <h3>Website Design</h3>
+          <p>Simple, responsive websites for small businesses and personal projects.</p>
+          <strong>$250+</strong>
+        </article>
+        <article class="service-card">
+          <div class="icon">🎨</div>
+          <h3>Branding</h3>
+          <p>Logos, flyers, social graphics, business cards, and visual identity pieces.</p>
+          <strong>$45+</strong>
+        </article>
+        <article class="service-card">
+          <div class="icon">📄</div>
+          <h3>Office Support</h3>
+          <p>Resumes, spreadsheets, presentations, forms, and polished documents.</p>
+          <strong>$35+</strong>
+        </article>
+      </div>
+    </section>
+
+    <section id="estimator" class="section split">
+      <div>
+        <p class="eyebrow">JavaScript practice</p>
+        <h2>Quick Quote Estimator</h2>
+        <p>Pick a service, quantity, and rush option. JavaScript calculates the estimate instantly.</p>
+      </div>
+
+      <form id="quoteForm" class="panel">
+        <label>
+          Service
+          <select id="serviceSelect">
+            <option value="35">Resume / Office Document — $35</option>
+            <option value="45">Flyer / Social Graphic — $45</option>
+            <option value="75">Business Card Package — $75</option>
+            <option value="250">Starter Website — $250</option>
+          </select>
+        </label>
+
+        <label>
+          Quantity
+          <input id="quantity" type="number" min="1" max="20" value="1" />
+        </label>
+
+        <label class="checkbox-row">
+          <input id="rush" type="checkbox" />
+          Add rush service (+25%)
+        </label>
+
+        <div class="estimate-box">
+          <span>Estimated total</span>
+          <strong id="estimateTotal">$35.00</strong>
+        </div>
+      </form>
+    </section>
+
+    <section id="notes" class="section split">
+      <div>
+        <p class="eyebrow">LocalStorage practice</p>
+        <h2>Practice Notes</h2>
+        <p>Type a note and save it. Refresh the page—the note stays because JavaScript saves it in your browser.</p>
+      </div>
+      <div class="panel">
+        <label for="practiceNotes">What did you change today?</label>
+        <textarea id="practiceNotes" rows="8" placeholder="Example: Changed the hero heading, learned padding vs margin..."></textarea>
+        <div class="button-row">
+          <button id="saveNotes" class="btn primary" type="button">Save notes</button>
+          <button id="clearNotes" class="btn ghost" type="button">Clear</button>
+        </div>
+        <p id="noteStatus" class="status" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section id="contact" class="section split">
+      <div>
+        <p class="eyebrow">Form validation practice</p>
+        <h2>Demo Contact Form</h2>
+        <p>This does not send a real email. It validates the fields and shows a success message.</p>
+      </div>
+      <form id="contactForm" class="panel" novalidate>
+        <label>
+          Name
+          <input id="name" type="text" required minlength="2" />
+        </label>
+        <label>
+          Email
+          <input id="email" type="email" required />
+        </label>
+        <label>
+          Message
+          <textarea id="message" rows="5" required minlength="10"></textarea>
+        </label>
+        <button class="btn primary" type="submit">Send demo message</button>
+        <p id="formStatus" class="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Practice only — completely separate from your live S3LFM@DE Solutions website.</p>
+    <p>&copy; <span id="year"></span> Coding Playground</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

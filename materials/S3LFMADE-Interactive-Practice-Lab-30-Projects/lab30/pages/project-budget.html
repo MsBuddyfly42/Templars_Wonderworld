@@ -1,0 +1,19 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Project Budget Calculator | S3LFM@DE Practice Lab</title><link rel="stylesheet" href="../assets/styles.css"></head><body>
+<div class="topbar"><div class="brand">S3LFM<span>@</span>DE Solutions • Practice Lab</div><a href="../index.html">← Practice Dashboard</a></div>
+<main class="shell"><div class="hero"><span class="badge">Budgeting</span><h1>Project Budget Calculator</h1><p>Type your own practice information, test the fields, preview it, save it, reset it, and try again.</p></div>
+<div class="notice"><b>Practice copy:</b> Nothing on this page sends to your live business website.</div>
+<div class="panel"><h2 class="section-title">Practice Form</h2><p class="hint">Fields with * are required.</p><form id="practiceForm" novalidate><div class="formgrid"><div class="field"><label for="budget">Total Budget ($) *</label><input id="budget" name="budget" required min="0" step="any" type="number"><div class="field-msg"></div></div>
+<div class="field"><label for="venue">Venue ($) *</label><input id="venue" name="venue" required min="0" step="any" type="number"><div class="field-msg"></div></div>
+<div class="field"><label for="food">Food / Catering ($) *</label><input id="food" name="food" required min="0" step="any" type="number"><div class="field-msg"></div></div>
+<div class="field"><label for="decor">Decor ($) *</label><input id="decor" name="decor" required min="0" step="any" type="number"><div class="field-msg"></div></div>
+<div class="field"><label for="entertainment">Entertainment ($) *</label><input id="entertainment" name="entertainment" required min="0" step="any" type="number"><div class="field-msg"></div></div>
+<div class="field"><label for="other">Other Costs ($) *</label><input id="other" name="other" required min="0" step="any" type="number"><div class="field-msg"></div></div></div><div class="btnrow"><button class="btn" type="button" id="check">Check My Work</button><button class="btn gold" type="button" id="previewBtn">Build Preview</button><button class="btn secondary" type="button" id="sample">Load Sample</button><button class="btn secondary" type="button" id="save">Save Draft</button><button class="btn secondary" type="button" id="load">Load Draft</button><button class="btn danger" type="reset">Reset</button></div></form><div class="status"></div></div>
+<div class="panel"><h2 class="section-title">Live Preview</h2><div id="preview" class="preview">Your preview will appear here.</div></div></main><div class="footer">S3LFM@DE Solutions • Interactive practice only</div>
+<script src="../assets/common.js"></script><script>
+const form=Lab.$('#practiceForm'),preview=Lab.$('#preview'),sample={"budget": "2500", "venue": "700", "food": "850", "decor": "350", "entertainment": "300", "other": "150"};
+Lab.$('#check').onclick=()=>Lab.validateForm(form);
+Lab.$('#previewBtn').onclick=()=>{if(!Lab.validateForm(form))return;const d=Lab.formData(form);let extra='';const spend=['venue','food','decor','entertainment','other'].reduce((a,k)=>a+Number(d[k]||0),0),budget=Number(d.budget||0);extra=`\n\nPlanned Expenses: $${spend.toFixed(2)}\nRemaining Budget: $${(budget-spend).toFixed(2)}`;preview.textContent=Object.entries(d).filter(([k,v])=>String(v).trim()).map(([k,v])=>k.replace(/([A-Z])/g,' $1').replace(/^./,c=>c.toUpperCase())+': '+v).join('\n\n')+extra;};
+Lab.$('#sample').onclick=()=>{Object.entries(sample).forEach(([k,v])=>{const e=form.elements[k];if(e)e.value=v;});Lab.validateForm(form);};
+Lab.$('#save').onclick=()=>Lab.save(form,'s3lfmade-project-budget');Lab.$('#load').onclick=()=>Lab.load(form,'s3lfmade-project-budget');
+form.addEventListener('reset',()=>setTimeout(()=>{Lab.clearValidation(form);preview.textContent='Your preview will appear here.';},0));
+</script></body></html>

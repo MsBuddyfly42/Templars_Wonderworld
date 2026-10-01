@@ -1,0 +1,42 @@
+S3LFM@DE PRACTICE CHALLENGES
+
+BEGINNER
+1. Change one label on a form.
+2. Change one placeholder.
+3. Make an optional field required.
+4. Change the burgundy color in assets/styles.css.
+5. Add one choice to a dropdown.
+
+VALIDATION
+6. Type a bad email and fix it.
+7. Type only 5 phone digits and fix it.
+8. Leave every required field empty and identify each error.
+9. Change a minimum number in the HTML and test the new rule.
+10. Add data-minwords="30" to a textarea and test it.
+
+JAVASCRIPT
+11. Change the success message in assets/common.js.
+12. Add a new button that fills one field automatically.
+13. Change how the preview is formatted.
+14. In Invoice Builder, add a tax field to the math.
+15. In Project Tracker, show “PAID” when balance reaches $0.
+
+REAL-WORLD PRACTICE
+16. Build a fake customer order from start to finish.
+17. Enter 5 bookkeeping rows and download the CSV.
+18. Create a complete resume using your own fake practice person.
+19. Create a church program and a memorial program without loading sample data.
+20. Duplicate a page and turn it into a brand-new service form.
+
+
+30-PROJECT MASTER CHALLENGE
+21. Complete all 30 projects without using Load Sample.
+22. Intentionally make one error in every project and confirm the validator catches it.
+23. Save a draft in five different projects, refresh the browser, and confirm the drafts return.
+24. Customize one field label in projects 014–020.
+25. Add one new dropdown option in projects 021–026.
+26. Change a calculation in project 027 or 028 and verify the new result.
+27. Break the foreign-key match in project 029, then fix it.
+28. Test every star option in project 030.
+29. Take screenshots of three finished practice projects for your portfolio review.
+30. Before posting any demo publicly, label it Practice Sample, Portfolio Concept, or Demo Project when it is not real client work.

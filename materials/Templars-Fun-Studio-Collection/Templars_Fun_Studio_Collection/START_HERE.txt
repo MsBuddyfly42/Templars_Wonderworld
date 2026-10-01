@@ -1,0 +1,8 @@
+TEMPLAR'S FUN STUDIO COLLECTION
+
+Extract this ZIP, then double-click any of these files:
+- Story_Studio.html: create and save original stories.
+- Singing_Challenge_Studio.html: singing and songwriting prompts with a timer.
+- Help_Desk_Mystery.html: solve five computer support cases.
+
+All three work offline in a modern browser. Each saves progress in that browser on that computer. Use the Download buttons inside the activities to keep separate copies of your writing and notes.

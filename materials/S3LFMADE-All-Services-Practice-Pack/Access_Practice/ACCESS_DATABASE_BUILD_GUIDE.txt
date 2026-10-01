@@ -1,0 +1,23 @@
+S3LFM@DE Solutions - Microsoft Access Practice Database
+
+Create a blank Access .accdb database, then import the four CSV files as tables:
+Customers, Services, Orders, Payments.
+
+Suggested primary keys:
+Customers.CustomerID
+Services.ServiceID
+Orders.OrderID
+Payments.PaymentID
+
+Suggested relationships:
+Customers.CustomerID -> Orders.CustomerID (one-to-many)
+Services.ServiceID -> Orders.ServiceID (one-to-many)
+Orders.OrderID -> Payments.OrderID (one-to-many)
+
+Practice:
+1. Build a Customer Entry form.
+2. Build an Orders form.
+3. Create a query for In Progress orders.
+4. Create a query totaling payments by customer.
+5. Create an Order Summary report.
+6. Change form/report colors and fonts.
