@@ -1,0 +1,152 @@
+{
+  "atrium": {
+    "label": "Wonderworld Hall",
+    "wall": "#e8d8b8",
+    "accent": "#8a4b76"
+  },
+  "coding": {
+    "label": "Coding & Computer Lab",
+    "wall": "#c8e0e9",
+    "accent": "#245e83"
+  },
+  "word": {
+    "label": "Word Document Studio",
+    "wall": "#d3deed",
+    "accent": "#2d579c"
+  },
+  "excel": {
+    "label": "Excel Numbers Lab",
+    "wall": "#cfdfcf",
+    "accent": "#28694d"
+  },
+  "powerpoint": {
+    "label": "PowerPoint Presentation Room",
+    "wall": "#ecd6c7",
+    "accent": "#ac542c"
+  },
+  "access": {
+    "label": "Access Database Room",
+    "wall": "#e4ced7",
+    "accent": "#933f5a"
+  },
+  "reading": {
+    "label": "Reading Library",
+    "wall": "#e8d6c0",
+    "accent": "#885235"
+  },
+  "games": {
+    "label": "Game Show Studio",
+    "wall": "#d2c8e9",
+    "accent": "#764ca6"
+  },
+  "practice": {
+    "label": "Project Maker Lab",
+    "wall": "#cae0df",
+    "accent": "#247977"
+  },
+  "helpdesk": {
+    "label": "Technician\u2019s Workshop",
+    "wall": "#dbcdbc",
+    "accent": "#88602e"
+  },
+  "reference": {
+    "label": "Reference Library",
+    "wall": "#d9d4e6",
+    "accent": "#695789"
+  },
+  "writing": {
+    "label": "Writer\u2019s Study",
+    "wall": "#eadcbe",
+    "accent": "#936f30"
+  },
+  "creative": {
+    "label": "Creative Art Studio",
+    "wall": "#f2d3ca",
+    "accent": "#b95b53"
+  },
+  "projects": {
+    "label": "Design Project Studio",
+    "wall": "#cee0e6",
+    "accent": "#376f81"
+  },
+  "puzzle": {
+    "label": "Puzzle & Logic Library",
+    "wall": "#e4d6ef",
+    "accent": "#8152a0"
+  },
+  "visual": {
+    "label": "Visual Discovery Lab",
+    "wall": "#cce4e7",
+    "accent": "#2c7e86"
+  },
+  "music": {
+    "label": "Singing & Music Room",
+    "wall": "#e7cad7",
+    "accent": "#984971"
+  },
+  "cozy": {
+    "label": "Cozy Reading Corner",
+    "wall": "#edd9bb",
+    "accent": "#96734b"
+  },
+  "business": {
+    "label": "Business Skills Studio",
+    "wall": "#d8d8cc",
+    "accent": "#617454"
+  },
+  "events": {
+    "label": "Event Planning Studio",
+    "wall": "#ecd3dc",
+    "accent": "#97596f"
+  },
+  "history": {
+    "label": "History Gallery",
+    "wall": "#dfd6bc",
+    "accent": "#8f7743"
+  },
+  "ancient": {
+    "label": "Ancient Civilizations Gallery",
+    "wall": "#e6d2b2",
+    "accent": "#a47842"
+  },
+  "royal": {
+    "label": "Storybook & Royal Study",
+    "wall": "#e0cce6",
+    "accent": "#795c91"
+  },
+  "western": {
+    "label": "Western Learning Room",
+    "wall": "#d9c29d",
+    "accent": "#8e6340"
+  },
+  "maritime": {
+    "label": "Titanic & Maritime Gallery",
+    "wall": "#c8dae0",
+    "accent": "#3d687e"
+  },
+  "geography": {
+    "label": "Geography & Map Room",
+    "wall": "#d9e0c3",
+    "accent": "#56784c"
+  },
+  "science": {
+    "label": "What Happens If Lab",
+    "wall": "#cbded8",
+    "accent": "#387970"
+  },
+  "court": {
+    "label": "Evidence & Case Room",
+    "wall": "#ddd2be",
+    "accent": "#82704d"
+  },
+  "news": {
+    "label": "Newspaper & Media Studio",
+    "wall": "#d7dde3",
+    "accent": "#657785"
+  },
+  "memory": {
+    "label": "Memory & Discovery Arcade",
+    "wall": "#d5d3e9",
+    "accent": "#74628e"
+  }
+}
