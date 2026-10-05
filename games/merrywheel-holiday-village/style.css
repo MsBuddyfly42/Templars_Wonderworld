@@ -35,6 +35,7 @@ h3{font-family:var(--font-d);font-weight:400;font-size:19px;margin:14px 0 6px;co
 .btn.ghost{background:transparent;box-shadow:inset 0 0 0 2px var(--line)}
 .btn.big{font-size:18px;padding:14px 30px}
 .btn:disabled{opacity:.45;cursor:default;transform:none}
+.title-card .world-return{display:inline-block;margin-top:12px;text-decoration:none}
 .btn.sm{padding:7px 13px;font-size:13px}
 
 /* HUD */
@@ -48,6 +49,7 @@ h3{font-family:var(--font-d);font-weight:400;font-size:19px;margin:14px 0 6px;co
 .pill.next{background:var(--night);color:var(--cream);max-width:360px;overflow:hidden;text-overflow:ellipsis}
 .pill.next.live{background:var(--gold);color:var(--night)}
 .pill.back{font-size:15px}
+#hud a.world-return{color:var(--night);text-decoration:none}
 .coin{width:15px;height:15px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#ffe6a0,#e2b04a 60%,#a87a20);display:inline-block}
 .snow input{width:64px;accent-color:var(--night-2)}
 #btn-sound.off{opacity:.55}
