@@ -1,0 +1,351 @@
+/* GAME RESET */
+*,*:before,*:after{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0}button,input,select,textarea{font:inherit}button{touch-action:manipulation}img,svg{max-width:100%;height:auto}
+
+/* === PLAYABLE HISTORICAL WORLD === */
+.playable-mode{margin:0;background:#070b18;color:#f7f1df;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Arial,sans-serif}
+.playable-mode>.legacy-world{display:none!important}
+.time-world{min-height:100vh;background:
+  radial-gradient(circle at 50% -10%,#3b346a 0,transparent 36rem),
+  linear-gradient(160deg,#090d1e,#121b35 55%,#070b18);padding:24px clamp(12px,3vw,36px) 34px}
+.game-header{width:min(1280px,100%);margin:0 auto 18px;display:flex;align-items:end;justify-content:space-between;gap:18px}
+.game-kicker,.mini-kicker{margin:0 0 5px;color:#ffd77f;font-size:.72rem;font-weight:900;letter-spacing:.18em}
+.game-header h1{margin:0;font-family:Georgia,serif;font-size:clamp(2rem,5vw,4.6rem);line-height:.95;background:linear-gradient(110deg,#fff9da,#f4c66d 50%,#a9d9ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.game-subtitle{margin:9px 0 0;color:#c5ccdc}
+.game-stats{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.game-stats span{background:#111a35d9;border:1px solid #616989;border-radius:999px;padding:9px 12px;color:#d9e2f1;font-size:.86rem}.game-stats b{color:#ffe099}
+.game-shell{width:min(1280px,100%);margin:auto;display:grid;grid-template-columns:minmax(0,1fr) 285px;gap:18px;align-items:start}
+.game-view{min-width:0}.game-stage{position:relative;aspect-ratio:16/10;min-height:340px;overflow:hidden;border:2px solid #d7b267;border-radius:26px;background:#1b2440;box-shadow:0 24px 70px #0009,inset 0 0 60px #0c102080;outline:none;touch-action:none}
+.game-stage:focus-visible{outline:3px solid #fff0a6;outline-offset:4px}
+.scene-backdrop{position:absolute;inset:0;transition:background .6s ease}
+.scene-backdrop.hall{background:
+ radial-gradient(circle at 50% 32%,#c7b8ff33 0 5%,transparent 26%),
+ linear-gradient(90deg,#18203d 0 4%,transparent 4% 96%,#18203d 96%),
+ linear-gradient(#20284d 0 14%,#303b65 14% 16%,#151b38 16% 74%,#5b4b43 74% 78%,#24213d 78%)}
+.scene-backdrop.titanic{background:linear-gradient(#7fa7c8 0 48%,#dfe8ee 48% 52%,#3b6681 52% 66%,#102f48 66%);box-shadow:inset 0 -130px 90px #07172599}
+.scene-backdrop.west{background:linear-gradient(#58a1d6 0 38%,#f0aa6e 38% 53%,#a95743 53% 62%,#d39b67 62%)}
+.scene-backdrop.egypt{background:linear-gradient(#56a8df 0 46%,#f2c774 46% 61%,#d9ae62 61%)}
+.scene-backdrop.medieval{background:linear-gradient(#8ca8ca 0 45%,#a8bc8b 45% 57%,#5f845f 57%)}
+.world-objects,.world-labels,.collectibles{position:absolute;inset:0}.world-object{position:absolute;transform:translate(-50%,-50%);display:grid;place-items:center;filter:drop-shadow(0 9px 9px #0007)}
+.world-object.portal{width:13%;aspect-ratio:.7;border:8px solid #f3ce7b;border-radius:50%;background:radial-gradient(circle,#fff6bd 0 12%,#8ebfff 40%,#7350be 63%,#151b46 66%);box-shadow:0 0 32px #f9d980,0 0 60px #785bd5;animation:portalPulse 2.2s ease-in-out infinite alternate}
+.world-object.portal:before{content:"";position:absolute;inset:-14px;border:3px solid #a68ad7;border-radius:50%;transform:rotate(17deg)}
+.world-object.building{font-size:clamp(2.1rem,6vw,5rem)}.world-object.npc{font-size:clamp(1.7rem,4vw,3.2rem);z-index:3}.world-object.prop{font-size:clamp(1.4rem,3.5vw,2.8rem)}
+.world-label{position:absolute;transform:translate(-50%,-50%);padding:5px 9px;background:#10172dd9;border:1px solid #d8c28e;border-radius:10px;color:#fff7dc;font-size:clamp(.62rem,1.3vw,.83rem);font-weight:800;white-space:nowrap;box-shadow:0 5px 15px #0006}
+.collectible{position:absolute;transform:translate(-50%,-50%);font-size:clamp(1.35rem,3vw,2.2rem);filter:drop-shadow(0 0 10px #fff5ab);animation:floatItem 1.4s ease-in-out infinite alternate}
+.traveler{position:absolute;width:5.6%;aspect-ratio:.65;transform:translate(-50%,-76%);z-index:10;transition:left .045s linear,top .045s linear;filter:drop-shadow(0 7px 5px #0008)}
+.traveler-body{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center}.traveler-head{font-size:clamp(1.15rem,3vw,2.1rem);z-index:2}.traveler-coat{width:72%;height:58%;margin-top:-2px;background:linear-gradient(90deg,#8d5a39,#c8864e 48%,#704026 52%);border-radius:44% 44% 20% 20%;border:2px solid #f0c18a}.traveler-shadow{position:absolute;width:90%;height:14%;bottom:0;background:#0006;filter:blur(4px);border-radius:50%}
+.interaction-hint{position:absolute;left:50%;bottom:4%;transform:translateX(-50%);z-index:20;background:#fff2bf;color:#231a2c;border:2px solid #7e5f9e;border-radius:999px;padding:8px 13px;font-size:.83rem;font-weight:900;box-shadow:0 8px 18px #0006}.hidden{display:none!important}
+.scene-toast{position:absolute;top:3%;left:50%;transform:translateX(-50%) translateY(-15px);opacity:0;z-index:25;max-width:80%;padding:9px 13px;border-radius:12px;background:#121a35ee;border:1px solid #e8c879;color:#fff2ca;text-align:center;pointer-events:none;transition:.25s}.scene-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.game-controls{display:flex;justify-content:space-between;gap:14px;align-items:center;padding:14px 4px}.dpad{display:grid;grid-template-columns:48px 48px 48px;grid-template-rows:44px 44px;gap:5px}.dpad button,.game-action{border:1px solid #c5ae7c;background:#172240;color:#fff0c9;border-radius:12px;font-weight:850;min-height:44px;cursor:pointer}.dpad button:active,.game-action:active{transform:translateY(2px)}.dpad button:hover,.game-action:hover{background:#29365f}.action-controls{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.game-action{padding:10px 15px}.game-action:not(.secondary){background:linear-gradient(135deg,#ffe79c,#d8a94e);color:#29213c}.game-action:disabled{opacity:.45;cursor:not-allowed}.control-note{margin:0;color:#9da9c1;font-size:.78rem}
+.game-side{display:grid;gap:12px}.mission-card,.nearby-card,.passport-card{background:#111a31d9;border:1px solid #424e70;border-radius:18px;padding:16px;box-shadow:0 12px 32px #0005}.game-side h2{margin:0 0 8px;font-family:Georgia,serif;font-size:1.35rem}.game-side p,#nearbyInfo{color:#c9d0df;line-height:1.55}.passport-list{display:flex;flex-wrap:wrap;gap:6px}.passport-stamp{font-size:.72rem;border:1px solid #665d84;border-radius:999px;padding:6px 8px;color:#aab3c7}.passport-stamp.visited{border-color:#dfba68;color:#ffe5a2;background:#44361f66}
+.world-dialog{width:min(620px,calc(100% - 24px));border:1px solid #d7b267;border-radius:22px;background:#10172d;color:#f6f0df;padding:24px;box-shadow:0 25px 80px #000b}.world-dialog::backdrop{background:#050814cc;backdrop-filter:blur(5px)}.dialog-close{float:right;border:0;background:#2c3654;color:white;border-radius:50%;width:40px;height:40px;font-size:1.4rem;cursor:pointer}.world-dialog h2{font-family:Georgia,serif;font-size:clamp(1.6rem,4vw,2.3rem);margin:.2rem 0 .6rem;color:#ffe0a0}.world-dialog p{color:#cbd3e1;line-height:1.6}.dialog-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}.dialog-actions button,.time-map-grid button{border:1px solid #c9ae72;background:#1e2b4e;color:#fff0ca;border-radius:12px;padding:11px 13px;cursor:pointer;font-weight:800}.dialog-actions button:hover,.time-map-grid button:hover{background:#34456f}.time-map-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.time-map-grid button:disabled{opacity:.4;cursor:not-allowed}
+.journal-entry{border-left:3px solid #d6b05e;padding:8px 0 8px 12px;margin:10px 0}.journal-entry b{color:#ffe2a2}
+@keyframes portalPulse{to{filter:brightness(1.2);box-shadow:0 0 40px #f9e0a1,0 0 74px #815fd4}}@keyframes floatItem{to{transform:translate(-50%,calc(-50% - 8px))}}
+@media(max-width:900px){.game-header{align-items:flex-start;flex-direction:column}.game-stats{justify-content:flex-start}.game-shell{grid-template-columns:1fr}.game-side{grid-template-columns:repeat(3,minmax(0,1fr))}.game-stage{min-height:0}.mission-card,.nearby-card,.passport-card{padding:13px}}
+@media(max-width:640px){.time-world{padding:14px 10px 26px}.game-stage{border-radius:18px}.game-side{grid-template-columns:1fr}.game-controls{align-items:flex-start}.action-controls{max-width:185px}.game-action{flex:1 1 80px;padding:9px}.dpad{grid-template-columns:46px 46px 46px}.game-header h1{font-size:2.55rem}.game-stats span{font-size:.75rem}.control-note{font-size:.72rem}.world-label{font-size:.58rem}.time-map-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.world-object.portal,.collectible{animation:none!important}.traveler{transition:none}.scene-toast{transition:none}}
+
+/* === PLAYABLE WORLD EXPANSION PASS 2 === */
+.quest-card{background:linear-gradient(145deg,#191e3b,#202b4d);border:1px solid #6f668d;border-radius:18px;padding:16px;box-shadow:0 12px 32px #0005}.quest-card h2{margin:0 0 7px;font:700 1.25rem Georgia,serif;color:#ffe1a1}.quest-card #questProgress{font-size:.86rem;color:#cbd1df;line-height:1.5}.quest-meter{height:8px;border-radius:999px;overflow:hidden;background:#0c1227;margin-top:10px;border:1px solid #404d6d}.quest-meter i{display:block;width:0;height:100%;background:linear-gradient(90deg,#e5ae4d,#ffe59c);transition:width .35s ease}
+.world-object.door{font-size:clamp(2rem,5vw,4rem);filter:drop-shadow(0 7px 8px #0008)}
+.scene-backdrop.titanicInterior{background:linear-gradient(#d9d0c3 0 12%,#7b6b63 12% 15%,#eadfcd 15% 70%,#8a6249 70% 76%,#4c342a 76%);box-shadow:inset 0 0 80px #2a1d1866}
+.scene-backdrop.westInterior{background:linear-gradient(#6f3d2e 0 13%,#b46d46 13% 63%,#6a3f2f 63%);box-shadow:inset 0 0 100px #321c1688}
+.scene-backdrop.castleInterior{background:linear-gradient(#747483 0 12%,#a6a2a0 12% 15%,#777b7f 15% 73%,#4b4039 73%);box-shadow:inset 0 0 85px #171622aa}
+.scene-backdrop.victorian{background:linear-gradient(#53627c 0 45%,#b08972 45% 55%,#4b4544 55%);box-shadow:inset 0 0 100px #1e233288}
+.scene-backdrop.fifties{background:linear-gradient(#78b6d9 0 43%,#f3d1a1 43% 50%,#9bb3aa 50% 58%,#7c7a74 58%)}
+.scene-backdrop.roaring{background:linear-gradient(#34264e 0 43%,#c69461 43% 49%,#4c354b 49% 60%,#1d1727 60%);box-shadow:inset 0 0 100px #120c1aaa}
+.scene-backdrop.apollo{background:linear-gradient(#151b32 0 58%,#53606b 58% 65%,#262d35 65%);box-shadow:inset 0 0 110px #020713aa}
+.scene-backdrop.rome{background:linear-gradient(#83b7d6 0 43%,#e1c08b 43% 52%,#ba9d72 52% 59%,#9e8266 59%)}
+.scene-backdrop.renaissance{background:linear-gradient(#8cb4cf 0 42%,#d9b878 42% 50%,#b47b5a 50% 59%,#80604d 59%)}
+.scene-backdrop.revolution{background:linear-gradient(#778eaa 0 43%,#b69d80 43% 51%,#776052 51% 60%,#4f443e 60%)}
+.world-object.npc{animation:npcIdle 1.8s ease-in-out infinite alternate}.world-object.door{animation:doorGlow 2s ease-in-out infinite alternate}
+@keyframes npcIdle{to{transform:translate(-50%,calc(-50% - 4px))}}@keyframes doorGlow{to{filter:drop-shadow(0 0 16px #ffe3a1)}}
+@media(max-width:900px){.game-side{grid-template-columns:repeat(2,minmax(0,1fr))}.quest-card{grid-column:span 1}}
+@media(max-width:640px){.game-side{grid-template-columns:1fr}.quest-card{grid-column:auto}}
+@media(prefers-reduced-motion:reduce){.world-object.npc,.world-object.door{animation:none!important}.quest-meter i{transition:none}}
+
+/* === PLAYABLE WORLD EXPANSION PASS 3 === */
+.scene-backdrop.victorianInterior{background:linear-gradient(#6e6259 0 12%,#d8c7ad 12% 70%,#6a5244 70%);box-shadow:inset 0 0 90px #2a211daa}
+.scene-backdrop.theatreInterior{background:linear-gradient(#33233e 0 15%,#6d2742 15% 58%,#c49a62 58% 64%,#251b2b 64%);box-shadow:inset 0 0 110px #130d1dbb}
+.scene-backdrop.dinerInterior{background:linear-gradient(#b4dce9 0 18%,#f5ead3 18% 58%,#c54d55 58% 64%,#527681 64%);box-shadow:inset 0 0 90px #1b374266}
+.scene-backdrop.recordInterior{background:linear-gradient(#7aa5b7 0 16%,#e8d5b7 16% 61%,#7d4f43 61%);box-shadow:inset 0 0 90px #1d2d3966}
+.scene-backdrop.jazzInterior{background:linear-gradient(#1d1530 0 18%,#5b284d 18% 57%,#d6a35e 57% 63%,#17111f 63%);box-shadow:inset 0 0 120px #0a0710cc}
+.scene-backdrop.radioInterior{background:linear-gradient(#2c3448 0 17%,#8b7563 17% 61%,#403127 61%);box-shadow:inset 0 0 95px #0f1018aa}
+.scene-backdrop.apolloInterior{background:linear-gradient(#111725 0 20%,#3d4a56 20% 62%,#1f252d 62%);box-shadow:inset 0 0 100px #02050ccc}
+.scene-backdrop.watchInterior{background:linear-gradient(#b7c1c8 0 18%,#dacfb9 18% 64%,#74675b 64%);box-shadow:inset 0 0 85px #26313c55}
+.scene-backdrop.romeForum{background:linear-gradient(#7fb8d7 0 36%,#e8d3a8 36% 44%,#c3ab86 44% 55%,#9b8068 55%);box-shadow:inset 0 0 95px #6d5b4855}
+.scene-backdrop.romeBaths{background:linear-gradient(#d6d2c8 0 22%,#a8b3ad 22% 62%,#7c7269 62%);box-shadow:inset 0 0 105px #24303877}
+.scene-backdrop.printInterior{background:linear-gradient(#8a765f 0 18%,#d6c6a5 18% 62%,#6b4a36 62%);box-shadow:inset 0 0 90px #2e221c99}
+.scene-backdrop.atelierInterior{background:linear-gradient(#a99078 0 16%,#e0cfb5 16% 62%,#7b5b47 62%);box-shadow:inset 0 0 90px #3a2b2488}
+.scene-backdrop.revPrintInterior{background:linear-gradient(#84705c 0 16%,#d7c4a5 16% 62%,#6d4e3a 62%);box-shadow:inset 0 0 95px #2d211b99}
+.scene-backdrop.revTavernInterior{background:linear-gradient(#4d3428 0 14%,#8c5c3f 14% 56%,#543729 56%);box-shadow:inset 0 0 115px #1f130eb8}
+.ambient-walker{position:absolute;left:-8%;font-size:clamp(1.1rem,2.5vw,1.8rem);opacity:.72;z-index:2;pointer-events:none;animation:crossStage 16s linear infinite;filter:drop-shadow(0 5px 5px #0007)}
+.ambient-walker.w1{animation-duration:21s;animation-delay:-6s}.ambient-walker.w2{animation-duration:26s;animation-delay:-13s}
+@keyframes crossStage{from{left:-8%}to{left:108%}}
+.choice-reply{margin:13px 0;padding:11px 13px;border-left:3px solid #e1b860;background:#202a46;color:#f3e7c7!important;border-radius:8px;animation:replyIn .22s ease both}
+@keyframes replyIn{from{opacity:.25;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.ambient-walker{animation:none!important;display:none}.choice-reply{animation:none!important}}
+
+/* === GAME SYSTEMS PASS 4: TIME, MEMORY, LOCKS, STORY THREADS === */
+.chain-card{background:linear-gradient(145deg,#1c243d,#283257);border:1px solid #5d6c94;border-radius:18px;padding:16px;box-shadow:0 12px 32px #0005}
+.chain-card h2{margin:0 0 7px;font:700 1.2rem Georgia,serif;color:#cfe7ff}.chain-card #chainProgress{font-size:.86rem;color:#c9d2e2;line-height:1.5}.chain-card.complete{border-color:#cfb35f;background:linear-gradient(145deg,#2d2a20,#47402b)}.chain-card.complete h2{color:#ffe29a}
+.world-event{position:absolute;z-index:24;top:3%;right:3%;max-width:min(420px,68%);padding:9px 12px;border:1px solid #bea56d;border-radius:12px;background:#0e162be8;color:#f5e8bf;font-size:.78rem;line-height:1.35;box-shadow:0 8px 24px #0007;opacity:0;transform:translateY(-8px);pointer-events:none}.world-event.show{animation:eventIn 4.2s ease both}
+@keyframes eventIn{0%{opacity:0;transform:translateY(-8px)}10%,82%{opacity:1;transform:translateY(0)}100%{opacity:.25;transform:translateY(0)}}
+.npc-memory{padding:9px 11px;border-radius:10px;background:#252e4a;color:#dbe6fa!important;border-left:3px solid #87a9df;font-size:.9rem}
+.world-object.locked{filter:grayscale(.75) brightness(.62) drop-shadow(0 0 5px #000);box-shadow:none!important}.world-label.locked-label{color:#a8aec0;border-color:#4d566e;background:#101526ee}
+.scene-backdrop:after{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;transition:background .55s ease,opacity .55s ease}
+.time-world[data-time="morning"] .scene-backdrop:after{background:linear-gradient(#ffe9b51f,transparent 48%);opacity:.55}
+.time-world[data-time="afternoon"] .scene-backdrop:after{background:transparent;opacity:0}
+.time-world[data-time="evening"] .scene-backdrop:after{background:linear-gradient(#f09a5930,#7b3e7833 58%,#271c3c44);opacity:.68}
+.time-world[data-time="night"] .scene-backdrop:after{background:linear-gradient(#0b17357a,#10142e99);opacity:.88}
+.time-world[data-time="night"] .world-label{background:#080d1ee8;border-color:#8f84a9}.time-world[data-time="night"] .world-object{filter:drop-shadow(0 0 12px #e4d4a766)}
+.scene-backdrop.archiveInterior{background:linear-gradient(#1a1730 0 14%,#3a3150 14% 62%,#211a2c 62%);box-shadow:inset 0 0 120px #05040bcc}
+.scene-backdrop.archiveInterior:before{content:"";position:absolute;inset:12% 8% 21%;background:repeating-linear-gradient(90deg,#6c583d 0 4%,#2b2234 4% 8%,#8a7049 8% 11%,#2b2234 11% 15%);opacity:.38;border:2px solid #b99b60;border-radius:16px}
+@media(max-width:640px){.world-event{top:2%;right:2%;max-width:74%;font-size:.68rem}.chain-card{padding:13px}}
+@media(prefers-reduced-motion:reduce){.world-event.show{animation:none;opacity:1}.scene-backdrop:after{transition:none}}
+
+/* === LIVING WORLD PASS 5 === */
+.scene-backdrop.stationInterior{background:linear-gradient(#8295a8 0 18%,#d3c3aa 18% 59%,#6f6256 59% 66%,#4f443b 66%);box-shadow:inset 0 0 100px #20263188}
+.scene-backdrop.engineeringInterior{background:linear-gradient(#1a2430 0 18%,#66717a 18% 58%,#323940 58%);box-shadow:inset 0 0 110px #070b10bb}
+.world-object.prop{font-size:clamp(1.7rem,4vw,3.4rem);animation:eventObjectPulse 1.8s ease-in-out infinite alternate}
+@keyframes eventObjectPulse{to{transform:translate(-50%,calc(-50% - 5px));filter:drop-shadow(0 0 14px #ffe7a0)}}
+.time-world[data-time="morning"] .game-stage{box-shadow:0 24px 70px #0008,inset 0 0 50px #ffd69a22}
+.time-world[data-time="evening"] .game-stage{box-shadow:0 24px 70px #0009,inset 0 0 70px #e4796d26}
+.time-world[data-time="night"] .game-stage{box-shadow:0 24px 70px #000b,inset 0 0 95px #03071677}
+.world-label{transition:left .55s ease,top .55s ease,opacity .25s ease}.world-object.npc{transition:left .55s ease,top .55s ease}
+.chain-card.complete:after{content:"✓ Story resolved";display:inline-block;margin-top:9px;padding:5px 8px;border-radius:999px;background:#5f542d;color:#ffedb7;font-size:.72rem;font-weight:900;letter-spacing:.04em}
+@media(prefers-reduced-motion:reduce){.world-object.prop{animation:none!important}.world-label,.world-object.npc{transition:none!important}}
+
+/* === MOVEMENT + TRANSITION POLISH PASS 6 === */
+.scene-transition{position:absolute;inset:0;z-index:40;pointer-events:none;background:
+ radial-gradient(circle at 50% 48%,#fff4b900 0 12%,#cfa7ff55 28%,#0b1024ee 72%);opacity:0;transform:scale(1.08)}
+.scene-transition.active{animation:scenePortalFlash .62s ease both}
+@keyframes scenePortalFlash{0%{opacity:0;transform:scale(1.08)}28%{opacity:1;transform:scale(1)}62%{opacity:.92}100%{opacity:0;transform:scale(.98)}}
+.traveler.walking .traveler-body{animation:travelerStep .28s ease-in-out infinite alternate}
+.traveler.walking .traveler-shadow{animation:shadowStep .28s ease-in-out infinite alternate}
+@keyframes travelerStep{to{transform:translateY(-4px) rotate(-1.5deg)}}@keyframes shadowStep{to{transform:scaleX(.84);opacity:.45}}
+.game-stage{cursor:crosshair}.game-stage:active{cursor:grabbing}
+.world-object.building,.world-object.door,.world-object.npc,.world-object.prop{user-select:none}
+@media(max-width:640px){.game-stage{cursor:default}.control-note:after{content:" • Or tap anywhere in the scene to walk there."}}
+@media(prefers-reduced-motion:reduce){.scene-transition.active,.traveler.walking .traveler-body,.traveler.walking .traveler-shadow{animation:none!important}.scene-transition.active{opacity:.72}}
+
+/* === CHARACTER + DOOR ANIMATION PASS 7 === */
+.world-object.npc{width:54px;height:86px;font-size:0;filter:drop-shadow(0 8px 6px #0006)}
+.npc-figure{position:relative;width:42px;height:78px;margin:auto;transform-origin:50% 90%;animation:npcBreathe 1.8s ease-in-out infinite alternate}
+.npc-figure i{position:absolute;display:block}
+.npc-head{left:11px;top:2px;width:20px;height:20px;border-radius:50%;background:#c98f68;border:2px solid #6c4637;z-index:3}
+.style-1 .npc-head,.style-4 .npc-head{background:#8f5c3e}.style-2 .npc-head{background:#e1ad88}.style-3 .npc-head{background:#6b412e}
+.npc-hair{left:9px;top:0;width:24px;height:11px;border-radius:60% 60% 40% 40%;background:#34241f;z-index:4}.style-2 .npc-hair{background:#705033}.style-4 .npc-hair{background:#1e1715}
+.npc-body{left:8px;top:21px;width:27px;height:31px;border-radius:8px 8px 5px 5px;background:linear-gradient(90deg,#6d4b7f,#956ea5);border:2px solid #3d3048}
+.style-1 .npc-body{background:linear-gradient(90deg,#355d6d,#5f8791);border-color:#29434c}.style-2 .npc-body{background:linear-gradient(90deg,#7e5637,#b27a4c);border-color:#593c2a}.style-3 .npc-body{background:linear-gradient(90deg,#4c653e,#78935d);border-color:#33482b}.style-4 .npc-body{background:linear-gradient(90deg,#6b3942,#9d5b62);border-color:#4e2b31}
+.npc-arm{top:25px;width:7px;height:28px;border-radius:5px;background:#c98f68;transform-origin:50% 4px}.style-1 .npc-arm,.style-4 .npc-arm{background:#8f5c3e}.style-2 .npc-arm{background:#e1ad88}.style-3 .npc-arm{background:#6b412e}
+.npc-arm.a1{left:3px;transform:rotate(8deg)}.npc-arm.a2{right:3px;transform:rotate(-8deg)}
+.npc-leg{top:50px;width:9px;height:25px;border-radius:5px;background:#30384a}.npc-leg.l1{left:10px}.npc-leg.l2{right:10px}
+.npc-tool{display:none!important;right:-8px;top:24px;width:14px;height:14px;border-radius:3px;background:#e4be68;box-shadow:0 0 0 2px #745d32}
+.npc-figure.talking .a1{animation:talkArm .48s ease-in-out infinite alternate}.npc-figure.talking .a2{animation:talkArm2 .6s ease-in-out infinite alternate}.npc-figure.talking{animation:talkBob .7s ease-in-out infinite alternate}
+.npc-figure.working .npc-tool{display:block!important}.npc-figure.working .a2{animation:workArm .62s ease-in-out infinite alternate}.npc-figure.working{animation:workBob 1s ease-in-out infinite alternate}
+.npc-figure.reacting{animation:reactPop .38s ease both}.npc-figure.walking .l1{animation:walkLeg .34s ease-in-out infinite alternate}.npc-figure.walking .l2{animation:walkLeg2 .34s ease-in-out infinite alternate}.npc-figure.walking .a1{animation:walkArm .34s ease-in-out infinite alternate}.npc-figure.walking .a2{animation:walkArm2 .34s ease-in-out infinite alternate}
+@keyframes npcBreathe{to{transform:translateY(-2px)}}@keyframes talkBob{to{transform:translateY(-3px) rotate(1deg)}}@keyframes talkArm{to{transform:rotate(-32deg)}}@keyframes talkArm2{to{transform:rotate(25deg)}}@keyframes workArm{to{transform:rotate(-42deg)}}@keyframes workBob{to{transform:translateY(-2px) rotate(-1deg)}}@keyframes reactPop{50%{transform:translateY(-7px) scale(1.04)}100%{transform:none}}@keyframes walkLeg{to{transform:rotate(18deg)}}@keyframes walkLeg2{to{transform:rotate(-18deg)}}@keyframes walkArm{to{transform:rotate(-18deg)}}@keyframes walkArm2{to{transform:rotate(18deg)}}
+.world-object.door{width:50px;height:76px;font-size:0;perspective:300px}
+.door-frame{position:absolute;inset:0;border:6px solid #c59a61;background:#5a4536;border-radius:6px;box-shadow:0 8px 14px #0007,inset 0 0 0 2px #392a23}
+.door-panel{position:absolute;inset:4px;background:linear-gradient(90deg,#794e37,#9c6847 52%,#6a432f);border:2px solid #4d3025;transform-origin:left center;transition:transform .42s cubic-bezier(.2,.78,.2,1)}
+.door-knob{position:absolute;width:6px;height:6px;border-radius:50%;background:#f2d48a;right:8px;top:35px;z-index:2}
+.world-object.door-opening .door-panel{transform:rotateY(-74deg)}.world-object.door-opening{filter:drop-shadow(0 0 16px #ffe49a)}
+.ambient-walker .npc-figure{transform:scale(.8);animation:none}.ambient-walker .npc-figure.walking{animation:npcStreetWalk .5s ease-in-out infinite alternate}
+@keyframes npcStreetWalk{to{transform:scale(.8) translateY(-3px)}}
+@media(max-width:640px){.world-object.npc{width:46px;height:72px}.npc-figure{transform:scale(.86);transform-origin:top center}.world-object.door{width:44px;height:66px}}
+@media(prefers-reduced-motion:reduce){.npc-figure,.npc-figure *,.door-panel,.ambient-walker .npc-figure{animation:none!important;transition:none!important}}
+
+/* === PLAYER CHARACTER PASS 8 === */
+.traveler{width:52px;height:84px;aspect-ratio:auto}
+.traveler-body{position:absolute;inset:0;display:block;transform-origin:50% 88%}
+.player-head{position:absolute;left:14px;top:2px;width:24px;height:24px;border-radius:50%;background:#b97650;border:2px solid #5b3a2c;z-index:5}
+.player-hair{position:absolute;left:-2px;top:-4px;width:28px;height:12px;border-radius:70% 70% 35% 35%;background:#2b211f}
+.player-eye{position:absolute;top:10px;width:3px;height:3px;border-radius:50%;background:#2d211d}.player-eye.e1{left:6px}.player-eye.e2{right:6px}.player-mouth{position:absolute;left:9px;top:16px;width:7px;height:3px;border-bottom:2px solid #6c382d;border-radius:50%}
+.traveler-coat{position:absolute!important;left:11px;top:24px;width:30px!important;height:34px!important;margin:0!important;background:linear-gradient(90deg,#794f37,#bd8050 50%,#6a432f)!important;border:2px solid #4a3026!important;border-radius:8px 8px 6px 6px!important}
+.player-arm{position:absolute;top:28px;width:7px;height:29px;border-radius:5px;background:#a86c49;transform-origin:50% 3px;z-index:3}.player-arm.pa1{left:6px}.player-arm.pa2{right:6px}
+.player-leg{position:absolute;top:56px;width:9px;height:24px;border-radius:5px;background:#30384a}.player-leg.pl1{left:13px}.player-leg.pl2{right:13px}
+.traveler[data-dir="left"] .traveler-body{transform:scaleX(-1)}.traveler[data-dir="right"] .traveler-body{transform:scaleX(1)}
+.traveler[data-dir="up"] .player-eye,.traveler[data-dir="up"] .player-mouth{opacity:.18}.traveler[data-dir="down"] .player-eye,.traveler[data-dir="down"] .player-mouth{opacity:1}
+.traveler.walking .player-leg.pl1{animation:playerLegA .28s ease-in-out infinite alternate}.traveler.walking .player-leg.pl2{animation:playerLegB .28s ease-in-out infinite alternate}.traveler.walking .player-arm.pa1{animation:playerArmA .28s ease-in-out infinite alternate}.traveler.walking .player-arm.pa2{animation:playerArmB .28s ease-in-out infinite alternate}
+@keyframes playerLegA{to{transform:rotate(17deg)}}@keyframes playerLegB{to{transform:rotate(-17deg)}}@keyframes playerArmA{to{transform:rotate(-20deg)}}@keyframes playerArmB{to{transform:rotate(20deg)}}
+@media(max-width:640px){.traveler{width:44px;height:72px}.traveler-body{transform-origin:50% 88%}.player-head{left:11px;transform:scale(.88)}.traveler-coat{left:8px!important;transform:scale(.88);transform-origin:top center}.player-arm,.player-leg{transform:scale(.88)}}
+@media(prefers-reduced-motion:reduce){.traveler.walking .player-leg,.traveler.walking .player-arm{animation:none!important}}
+
+/* === ERA-SPECIFIC LAYERED SCENERY PASS 9 === */
+.scenery-layer,.fx-layer{position:absolute;inset:0;pointer-events:none}.scenery-layer{z-index:1}.fx-layer{z-index:4;overflow:hidden}
+.scenery-layer i{position:absolute;display:block}.world-objects{z-index:5}.world-labels{z-index:8}.collectibles{z-index:7}.traveler{z-index:12}
+.scenery-layer .arch{bottom:18%;width:16%;height:46%;border:9px solid #796ca1;border-bottom:0;border-radius:50% 50% 0 0;opacity:.45}.scenery-layer .arch.a1{left:7%}.scenery-layer .arch.a2{left:42%}.scenery-layer .arch.a3{right:7%}.floor-lines{position:absolute;left:8%;right:8%;bottom:5%;height:24%;background:repeating-linear-gradient(90deg,transparent 0 8%,#c3a66b26 8% 8.7%),repeating-linear-gradient(0deg,transparent 0 23%,#c3a66b22 23% 25%);transform:perspective(260px) rotateX(58deg);transform-origin:bottom}
+.ship-deck .rail{left:4%;right:4%;height:8px;background:#f2f3ed;bottom:24%;box-shadow:0 -23px 0 #f2f3ed}.ship-deck .rail:before{content:"";position:absolute;left:0;right:0;top:-26px;height:29px;background:repeating-linear-gradient(90deg,#f2f3ed 0 4px,transparent 4px 34px)}.ship-deck .funnel{width:8%;height:24%;left:46%;top:20%;background:linear-gradient(#d3a755 0 72%,#222 72%);border:4px solid #6d5638;border-radius:8px 8px 0 0}.ship-deck .deckhouse{left:25%;right:25%;bottom:25%;height:19%;background:#e6e1d5;border:4px solid #8f8a7d}
+.grand-interior .panel{top:14%;bottom:20%;width:21%;background:repeating-linear-gradient(#d8c3a1 0 22px,#b59b7b 22px 25px);border:5px solid #705946}.grand-interior .p1{left:3%}.grand-interior .p2{right:3%}.grand-interior .stairs{bottom:21%;width:25%;height:8%;background:#8c6248;border:4px solid #5e3f2d}.grand-interior .s1{left:25%;transform:skewY(-18deg)}.grand-interior .s2{right:25%;transform:skewY(18deg)}.grand-interior .lamp{top:18%;width:10px;height:36%;background:#6a553f}.grand-interior .lamp:after{content:"";position:absolute;left:-13px;top:-8px;width:36px;height:22px;border-radius:50%;background:#ffe8a6;box-shadow:0 0 18px #ffe8a6}.grand-interior .l1{left:37%}.grand-interior .l2{right:37%}
+.western-row .facade{bottom:28%;height:33%;background:#a95f3f;border:5px solid #70432f;box-shadow:inset 0 0 0 4px #cf875b}.western-row .f1{left:3%;width:22%}.western-row .f2{left:28%;width:20%;background:#c5905f}.western-row .f3{right:4%;width:23%;background:#ba7652}.western-row .awning{left:30%;bottom:46%;width:16%;height:8%;background:repeating-linear-gradient(90deg,#e8d1a2 0 18px,#9a4f42 18px 36px);transform:skewX(-8deg)}.western-row .hitch{left:50%;right:20%;bottom:23%;height:6px;background:#6a4935;box-shadow:0 -35px 0 -2px #6a4935}
+.saloon-room .bar{left:10%;right:53%;bottom:25%;height:16%;background:#6f472f;border:5px solid #3f2b20}.saloon-room .mirror{left:12%;width:32%;top:17%;height:30%;border:7px solid #8b684c;background:linear-gradient(135deg,#c7bba5,#6c7b80)}.saloon-room .table{bottom:26%;width:15%;height:7%;background:#6e4934}.saloon-room .t1{left:55%}.saloon-room .t2{right:9%}.saloon-room .table:after{content:"";position:absolute;left:48%;top:100%;width:8px;height:65px;background:#4d3528}.saloon-room .lamp{left:73%;top:16%;width:7px;height:26%;background:#4e3427}
+.egypt-scene .pyramid{bottom:31%;width:0;height:0;border-left:13vw solid transparent;border-right:13vw solid transparent;border-bottom:24vw solid #d5ac64;filter:drop-shadow(0 7px 4px #775b3a66)}.egypt-scene .py1{left:4%}.egypt-scene .py2{right:5%;transform:scale(.72);transform-origin:bottom}.egypt-scene .river{left:0;right:0;bottom:0;height:23%;background:linear-gradient(#6aaed5,#3b7598);opacity:.8}.egypt-scene .palm{bottom:24%;width:9px;height:25%;background:#6e4f32}.egypt-scene .palm:before{content:"";position:absolute;width:85px;height:55px;left:-38px;top:-35px;border-radius:50%;background:radial-gradient(ellipse at center,#5e9b50 0 24%,transparent 26%),conic-gradient(from 0deg,#5e9b50 0 10deg,transparent 10deg 45deg,#5e9b50 45deg 55deg,transparent 55deg 90deg,#5e9b50 90deg 100deg,transparent 100deg 135deg,#5e9b50 135deg 145deg,transparent 145deg 180deg,#5e9b50 180deg 190deg,transparent 190deg 225deg,#5e9b50 225deg 235deg,transparent 235deg 270deg,#5e9b50 270deg 280deg,transparent 280deg 315deg,#5e9b50 315deg 325deg,transparent 325deg)}.egypt-scene .pm1{left:35%}.egypt-scene .pm2{right:28%;height:20%}
+.medieval-scene .wall{left:10%;right:10%;bottom:27%;height:25%;background:#85827b;border:6px solid #5f5e5a}.medieval-scene .tower{bottom:26%;width:13%;height:42%;background:#777772;border:6px solid #585953}.medieval-scene .tw1{left:9%}.medieval-scene .tw2{right:9%}.medieval-scene .gatehouse{left:42%;bottom:27%;width:16%;height:32%;background:#696a67;border:5px solid #52534e}.medieval-scene .gatehouse:after{content:"";position:absolute;left:23%;right:23%;bottom:0;height:45%;border-radius:50% 50% 0 0;background:#2b2c2a}.medieval-scene .cottage{bottom:20%;width:17%;height:15%;background:#c49b67}.medieval-scene .c1{left:24%}.medieval-scene .c2{right:24%}
+.castle-room .column{top:8%;bottom:18%;width:6%;background:#9a9994}.castle-room .c1{left:13%}.castle-room .c2{right:13%}.castle-room .banner{top:13%;width:8%;height:28%;background:#713f62}.castle-room .b1{left:30%}.castle-room .b2{right:30%;background:#3f5278}.castle-room .hearth{left:40%;right:40%;bottom:20%;height:18%;background:#3e332e;box-shadow:inset 0 0 0 5px #857267}
+.victorian-row .building{bottom:24%;height:42%;background:#8f7567;border:5px solid #5c4d48}.victorian-row .b1{left:3%;width:25%}.victorian-row .b2{left:31%;width:24%;background:#a48a79}.victorian-row .b3{right:3%;width:27%;background:#7c6c72}.victorian-row .lamp-post{bottom:22%;width:5px;height:34%;background:#242629}.victorian-row .lamp-post:after{content:"";position:absolute;left:-11px;top:-4px;width:27px;height:30px;border:3px solid #2b2b2b;background:#e7d18388;box-shadow:0 0 14px #e7d183}.victorian-row .lp1{left:27%}.victorian-row .lp2{right:29%}
+.press-room .desk{bottom:24%;width:22%;height:10%;background:#6f4b38}.press-room .d1{left:10%}.press-room .d2{right:10%}.press-room .press{left:41%;bottom:25%;width:18%;height:30%;border:7px solid #3f4243;background:#6d7273}.press-room .paper-stack{left:61%;bottom:24%;width:11%;height:15%;background:repeating-linear-gradient(#e8dfca 0 4px,#a79a82 4px 5px)}
+.theatre-room .curtain{top:8%;bottom:22%;width:24%;background:linear-gradient(90deg,#5b1831,#8b2d4d,#5b1831)}.theatre-room .left{left:0}.theatre-room .right{right:0}.theatre-room .stage-floor{left:14%;right:14%;bottom:16%;height:12%;background:#7b4f35;transform:perspective(220px) rotateX(45deg)}.theatre-room .footlights{left:23%;right:23%;bottom:23%;height:8px;background:repeating-linear-gradient(90deg,#ffd98a 0 10px,transparent 10px 24px);filter:drop-shadow(0 0 5px #ffd98a)}
+.station-room .platform{left:4%;right:4%;bottom:17%;height:16%;background:#71665d}.station-room .clock{left:47%;top:16%;width:52px;height:52px;border-radius:50%;border:6px solid #4d453d;background:#e3d9c5}.station-room .window{top:18%;width:21%;height:26%;border:6px solid #675f59;background:linear-gradient(#9fc2d4,#d8cab2)}.station-room .w1{left:10%}.station-room .w2{right:10%}.station-room .track{left:0;right:0;bottom:5%;height:9%;background:repeating-linear-gradient(90deg,#433a34 0 20px,#88735d 20px 38px)}
+.mainstreet50 .store{bottom:24%;height:39%;border:5px solid #5f6670;background:#d9d2c7}.mainstreet50 .s1{left:3%;width:24%}.mainstreet50 .s2{left:30%;width:27%;background:#b5d6d2}.mainstreet50 .s3{right:3%;width:28%;background:#d8b4b8}.mainstreet50 .neon{top:22%;width:16%;height:5%;border:4px solid #ef6c8b;border-radius:8px;box-shadow:0 0 12px #ef6c8b}.mainstreet50 .n1{left:8%}.mainstreet50 .n2{right:9%;border-color:#65d7e4;box-shadow:0 0 12px #65d7e4}
+.diner-room .counter{left:8%;right:8%;bottom:27%;height:12%;background:#d7c3a7;border:5px solid #735f4e}.diner-room .stool{bottom:18%;width:9px;height:14%;background:#8e3338}.diner-room .st1{left:28%}.diner-room .st2{left:49%}.diner-room .st3{right:28%}.diner-room .neon{left:37%;top:20%;width:26%;height:8%;border:5px solid #e64c6b;border-radius:999px;box-shadow:0 0 14px #e64c6b}
+.record-room .shelf{top:18%;bottom:25%;width:19%;background:repeating-linear-gradient(#604839 0 8%,#c7a86e 8% 12%)}.record-room .sh1{left:6%}.record-room .sh2{right:6%}.record-room .booth{left:42%;top:19%;width:16%;height:35%;border:6px solid #4d5d6b;background:#71899a}.record-room .record-display{left:36%;right:36%;bottom:22%;height:9%;background:radial-gradient(circle,#171717 0 26%,#cf535f 27% 34%,#171717 35% 100%)}
+.city20 .building{bottom:23%;height:43%;background:#4c3c52;border:5px solid #2d2531}.city20 .b1{left:3%;width:31%}.city20 .b2{right:3%;width:34%;background:#574658}.city20 .marquee{left:39%;top:30%;width:22%;height:9%;background:#d6b25d;border:4px solid #fff2b1;box-shadow:0 0 12px #e4c56e}.city20 .streetlamp{left:50%;bottom:22%;width:5px;height:29%;background:#24222a}
+.jazz-room .stage{left:18%;right:18%;bottom:19%;height:22%;background:#5f3d36}.jazz-room .spotlight{left:42%;top:0;width:16%;height:45%;clip-path:polygon(40% 0,60% 0,100% 100%,0 100%);background:#ffe8a122}.jazz-room .table{bottom:17%;width:13%;height:5%;background:#6c453b}.jazz-room .t1{left:17%}.jazz-room .t2{right:17%}
+.radio-room .booth{left:5%;right:55%;top:14%;height:45%;border:6px solid #53616f;background:#8595a3}.radio-room .console{right:9%;bottom:23%;width:33%;height:20%;background:#363b45;border:6px solid #707780}.radio-room .onair{right:16%;top:19%;width:18%;height:8%;background:#b5303e;box-shadow:0 0 14px #d94754}.radio-room .mic-stand{left:63%;bottom:24%;width:5px;height:32%;background:#252a30}
+.apollo-yard .hangar{left:8%;right:42%;bottom:23%;height:35%;background:#7b8993;border:6px solid #4f5b64}.apollo-yard .antenna{right:19%;bottom:24%;width:6px;height:36%;background:#79838a}.apollo-yard .antenna:after{content:"";position:absolute;left:-28px;top:-18px;width:60px;height:36px;border:5px solid #89959d;border-radius:50%}.apollo-yard .tower{right:7%;bottom:23%;width:7%;height:48%;background:repeating-linear-gradient(45deg,#8e9598 0 8px,#495157 8px 16px)}
+.mission-room .console{bottom:22%;width:18%;height:23%;background:#37414a;border:5px solid #697681}.mission-room .c1{left:8%}.mission-room .c2{left:40%}.mission-room .c3{right:8%}.mission-room .screen{top:16%;width:22%;height:17%;background:#172531;border:6px solid #59636c;box-shadow:inset 0 0 18px #65b6cc55}.mission-room .s1{left:20%}.mission-room .s2{right:20%}
+.engineering-room .bench{left:8%;right:8%;bottom:22%;height:12%;background:#5e6468;border:5px solid #3f464b}.engineering-room .rack{top:17%;bottom:38%;width:17%;background:repeating-linear-gradient(#364047 0 12%,#71808b 12% 17%)}.engineering-room .r1{left:8%}.engineering-room .r2{right:8%}.engineering-room .schematic{left:39%;top:17%;width:22%;height:25%;background:#295473;border:4px solid #8fb8d2}
+.living-room69 .sofa{left:10%;bottom:23%;width:38%;height:19%;background:#8d7157;border-radius:14px 14px 4px 4px}.living-room69 .tv{right:14%;bottom:22%;width:22%;height:28%;background:#453c35;border:8px solid #6d5f51}.living-room69 .tv:after{content:"";position:absolute;inset:10%;background:#8ba0a6}.living-room69 .lamp{left:53%;bottom:23%;width:6px;height:30%;background:#6a594a}.living-room69 .rug{left:27%;right:27%;bottom:9%;height:9%;background:#9e5d48;border-radius:50%}
+.roman-street .column,.forum-scene .column{bottom:22%;width:6%;height:38%;background:linear-gradient(90deg,#d1c5ae,#eee3ca,#c6baa4);border:3px solid #a6957d}.roman-street .c1{left:11%}.roman-street .c2{right:11%}.roman-street .arch{left:39%;bottom:22%;width:22%;height:34%;border:9px solid #c7baa2;border-bottom:0;border-radius:50% 50% 0 0}.roman-street .stall{left:58%;bottom:22%;width:18%;height:17%;background:#a86f4e}
+.forum-scene .temple{left:29%;right:29%;bottom:22%;height:29%;background:#d2c5aa;border:7px solid #a9987d}.forum-scene .c1{left:24%}.forum-scene .c2{left:47%}.forum-scene .c3{right:24%}.forum-scene .steps{left:22%;right:22%;bottom:18%;height:8%;background:repeating-linear-gradient(#b9aa91 0 6px,#8e816e 6px 9px)}
+.bath-scene .pool{left:20%;right:20%;bottom:13%;height:18%;background:linear-gradient(#8fc4ce,#5e96a6);border:7px solid #a89c88}.bath-scene .arch{top:11%;bottom:25%;width:24%;border:8px solid #a9a39a;border-bottom:0;border-radius:50% 50% 0 0}.bath-scene .a1{left:11%}.bath-scene .a2{right:11%}.bath-scene .steam{bottom:29%;width:14px;height:19%;border-left:5px solid #ffffff55;border-radius:50%}.bath-scene .st1{left:41%}.bath-scene .st2{right:41%}
+.renaissance-street .palazzo{bottom:24%;height:40%;background:#b88362;border:5px solid #7f5945}.renaissance-street .p1{left:4%;width:29%}.renaissance-street .p2{right:4%;width:30%;background:#c69a70}.renaissance-street .archway{left:42%;bottom:24%;width:16%;height:31%;border:8px solid #9d7258;border-bottom:0;border-radius:50% 50% 0 0}.renaissance-street .fountain{left:45%;bottom:16%;width:10%;height:7%;background:#6b95a5;border-radius:50%}
+.print-room .press,.colonial-print .press{left:41%;bottom:24%;width:18%;height:31%;border:7px solid #574230;background:#8b684b}.print-room .case{top:18%;bottom:28%;width:17%;background:repeating-linear-gradient(#6d513b 0 9%,#a8845c 9% 13%)}.print-room .c1{left:8%}.print-room .c2{right:8%}.print-room .paper{left:64%;bottom:24%;width:12%;height:13%;background:repeating-linear-gradient(#e6dbc3 0 5px,#a89982 5px 6px)}
+.atelier-room .easel{left:39%;bottom:20%;width:8px;height:39%;background:#714f36;transform:rotate(7deg)}.atelier-room .canvas{left:35%;top:23%;width:25%;height:26%;background:#e0d7c4;border:6px solid #76543d}.atelier-room .table{left:9%;bottom:23%;width:25%;height:11%;background:#72513c}.atelier-room .window{right:10%;top:17%;width:22%;height:27%;border:7px solid #715848;background:linear-gradient(#9bc4d6,#d9c79f)}
+.colonial-street .house{bottom:23%;height:41%;background:#8c6d5a;border:5px solid #5f4a3e}.colonial-street .h1{left:3%;width:28%}.colonial-street .h2{right:3%;width:29%;background:#9a8067}.colonial-street .shop{left:37%;bottom:23%;width:24%;height:35%;background:#b69a78;border:5px solid #6b5744}.colonial-street .sign{left:45%;top:29%;width:8%;height:7%;background:#6d4b37;transform:rotate(-4deg)}
+.colonial-print .typecase{left:8%;top:18%;bottom:27%;width:20%;background:repeating-linear-gradient(#634b3a 0 8%,#a6805a 8% 12%)}.colonial-print .broadsides{right:9%;top:21%;width:23%;height:31%;background:repeating-linear-gradient(#dfd1b6 0 13px,#8c7d67 13px 15px)}
+.tavern-room .hearth{left:9%;bottom:22%;width:22%;height:28%;background:#40312a;border:7px solid #7b604f;box-shadow:inset 0 0 22px #e0813c99}.tavern-room .table{bottom:22%;width:18%;height:7%;background:#684936}.tavern-room .t1{left:39%}.tavern-room .t2{right:13%}.tavern-room .beam{left:0;right:0;top:15%;height:8px;background:#4f392b}
+.archive-room .shelf{top:13%;bottom:24%;width:19%;background:repeating-linear-gradient(#6a523c 0 7%,#9b7950 7% 10%)}.archive-room .s1{left:4%}.archive-room .s2{right:4%}.archive-room .case{bottom:22%;width:20%;height:18%;border:5px solid #a2865c;background:#2d2b3b99}.archive-room .c1{left:27%}.archive-room .c2{right:27%}.archive-room .desk{left:42%;bottom:19%;width:16%;height:9%;background:#6b5039}
+.world-particle{position:absolute;width:4px;height:4px;border-radius:50%;background:#fff4bf;opacity:.42;animation:particleFloat 6s ease-in-out infinite alternate}.time-world[data-time="night"] .world-particle{background:#d8ecff;opacity:.72;box-shadow:0 0 7px #d8ecff}.world-particle.p1{width:3px;height:3px}.world-particle.p2{width:5px;height:5px;opacity:.3}.world-particle.p3{animation-duration:8s}
+@keyframes particleFloat{to{transform:translateY(-18px) translateX(8px);opacity:.78}}
+@media(max-width:640px){.scenery-layer{opacity:.9}.scenery-layer .building,.scenery-layer .palazzo,.scenery-layer .house{transform:scaleY(.92);transform-origin:bottom}}
+@media(prefers-reduced-motion:reduce){.world-particle{animation:none!important}}
+
+/* === CAMERA + PROXIMITY PASS 10 === */
+.game-stage{--cam-x:0;--cam-y:0}
+.scenery-layer{transform:translate(calc(var(--cam-x) * -7px),calc(var(--cam-y) * -5px)) scale(1.015);transition:transform .18s ease-out;transform-origin:center}
+.fx-layer{transform:translate(calc(var(--cam-x) * -3px),calc(var(--cam-y) * -2px));transition:transform .22s ease-out}
+.world-object.nearby{filter:drop-shadow(0 0 12px #ffe59a) drop-shadow(0 8px 8px #0006)!important}
+.world-object.nearby.npc .npc-figure{animation:nearbyAttention .8s ease-in-out infinite alternate}
+.world-object.nearby.door .door-frame{box-shadow:0 0 0 3px #ffe29d99,0 0 18px #ffe29d88,0 8px 14px #0007}
+.world-label.nearby{background:#fff2b8;color:#251b29;border-color:#fff0ad;box-shadow:0 0 14px #ffdc7d88;transform:translate(-50%,-50%) translateY(-3px)}
+@keyframes nearbyAttention{to{transform:translateY(-3px) scale(1.02)}}
+@media(prefers-reduced-motion:reduce){.scenery-layer,.fx-layer{transition:none;transform:none}.world-object.nearby.npc .npc-figure{animation:none!important}.world-label.nearby{transform:translate(-50%,-50%)}}
+
+/* === CHARACTER PRESENCE + NEW ROOM PASS 11 === */
+.npc-speech{position:absolute;left:50%;bottom:104%;transform:translateX(-50%);min-width:120px;max-width:190px;padding:7px 9px;border-radius:11px;background:#fff4ce;color:#2a2030;border:2px solid #8d6c55;font-size:.72rem;font-weight:800;line-height:1.25;box-shadow:0 7px 18px #0006;z-index:12;animation:bubbleIn .18s ease both}
+.npc-speech:after{content:"";position:absolute;left:50%;top:100%;transform:translateX(-50%);border:7px solid transparent;border-top-color:#fff4ce}
+.npc-figure.face-left{transform:scaleX(-1)}.npc-figure.face-right{transform:scaleX(1)}
+.npc-figure.patrolling:not(.talking):not(.working):not(.reacting){animation:npcPatrol 3.4s ease-in-out infinite alternate}
+@keyframes npcPatrol{0%{transform:translateX(-8px) translateY(0)}50%{transform:translateX(4px) translateY(-2px)}100%{transform:translateX(10px) translateY(0)}}
+@keyframes bubbleIn{from{opacity:0;transform:translateX(-50%) translateY(5px) scale(.96)}to{opacity:1;transform:translateX(-50%) translateY(0) scale(1)}}
+.dining-room .table{bottom:23%;width:21%;height:9%;background:#8c654e;border:5px solid #5b4133;border-radius:50%}.dining-room .dt1{left:8%}.dining-room .dt2{left:39%}.dining-room .dt3{right:8%}.dining-room .table:after{content:"";position:absolute;left:48%;top:100%;width:7px;height:54px;background:#5c4133}.dining-room .chandelier{left:48%;top:8%;width:5px;height:18%;background:#7a694d}.dining-room .chandelier:after{content:"";position:absolute;left:-32px;bottom:-10px;width:69px;height:28px;border-bottom:6px solid #c6a95f;border-radius:50%;box-shadow:0 9px 18px #ffe69a88}.dining-room .service-board{left:40%;right:40%;bottom:17%;height:8%;background:#e2d3b6;border:4px solid #9b8466}
+.medieval-kitchen .hearth{left:7%;bottom:23%;width:26%;height:29%;background:#3b3029;border:8px solid #80674f;box-shadow:inset 0 0 28px #ef843aa0}.medieval-kitchen .prep{left:41%;bottom:24%;width:30%;height:10%;background:#75523c;border:5px solid #4d372c}.medieval-kitchen .shelf{right:7%;top:18%;width:17%;height:39%;background:repeating-linear-gradient(#654a37 0 12%,#9a7651 12% 16%)}.medieval-kitchen .pot{bottom:30%;width:30px;height:22px;border-radius:0 0 50% 50%;background:#4a4b49}.medieval-kitchen .p1{left:17%}.medieval-kitchen .p2{left:55%}
+.cinema-room .screen{left:27%;right:27%;top:15%;height:32%;background:#e7e0d2;border:8px solid #4d4652;box-shadow:0 0 18px #d9dde5}.cinema-room .seatrow{left:14%;right:14%;height:11%;background:repeating-linear-gradient(90deg,#7a2739 0 8%,transparent 8% 11%)}.cinema-room .r1{bottom:26%}.cinema-room .r2{bottom:12%}.cinema-room .curtain{top:10%;bottom:38%;width:12%;background:linear-gradient(90deg,#5c1830,#8f2d4c,#5c1830)}.cinema-room .c1{left:12%}.cinema-room .c2{right:12%}
+.egypt-workshop .loom{left:9%;top:18%;width:31%;height:39%;border:8px solid #755534;background:repeating-linear-gradient(90deg,#d1b176 0 3px,transparent 3px 11px)}.egypt-workshop .pottery{right:10%;bottom:23%;width:21%;height:21%;background:radial-gradient(ellipse at center,#b5683f 0 45%,#7c432e 46% 58%,transparent 59%)}.egypt-workshop .shelf{right:7%;top:17%;width:25%;height:12%;background:#805b39;border:5px solid #5b432f}.egypt-workshop .window{left:47%;top:15%;width:19%;height:26%;background:linear-gradient(#83bedd,#e7cf8a);border:7px solid #9a7651}
+.scene-backdrop.titanicDining{background:linear-gradient(#d7cab5 0 12%,#efe2cd 12% 66%,#7b5b49 66%);box-shadow:inset 0 0 95px #2c211a77}
+.scene-backdrop.medievalKitchen{background:linear-gradient(#554338 0 13%,#8c6b54 13% 60%,#463329 60%);box-shadow:inset 0 0 100px #1d130eaa}
+.scene-backdrop.cinemaInterior{background:linear-gradient(#272332 0 14%,#4f3d50 14% 55%,#211b28 55%);box-shadow:inset 0 0 115px #09070dbb}
+.scene-backdrop.egyptWorkshop{background:linear-gradient(#a9c6ce 0 16%,#d7bf8a 16% 61%,#9d744b 61%);box-shadow:inset 0 0 90px #65482e66}
+@media(max-width:640px){.npc-speech{min-width:105px;max-width:150px;font-size:.64rem}.npc-figure.patrolling:not(.talking):not(.working):not(.reacting){animation-duration:2.8s}}
+@media(prefers-reduced-motion:reduce){.npc-figure.patrolling,.npc-speech{animation:none!important}.npc-figure.face-left,.npc-figure.face-right{transform:none}}
+
+/* === ENVIRONMENTAL MOTION PASS 12 === */
+.ship-deck .funnel:after{content:"";position:absolute;left:50%;top:-44px;width:54px;height:54px;border-radius:50%;background:radial-gradient(circle,#d9d9d955 0 34%,transparent 36%);filter:blur(3px);animation:smokeDrift 3.8s ease-in-out infinite}
+.egypt-scene .river:after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(170deg,transparent 0 18px,#d7f2ff33 18px 21px);animation:riverMove 4.5s linear infinite}
+.victorian-row .lamp-post:after{animation:lampFlicker 2.8s ease-in-out infinite alternate}
+.mainstreet50 .neon{animation:neonBuzz 2.1s ease-in-out infinite alternate}
+.radio-room .onair{animation:onAirBlink 1.4s steps(2,end) infinite}
+.bath-scene .steam{animation:steamRise 2.7s ease-in-out infinite}
+.apollo-yard .antenna:after{animation:dishSweep 5s ease-in-out infinite alternate;transform-origin:center}
+.mission-room .screen{animation:screenGlow 3s ease-in-out infinite alternate}
+.engineering-room .schematic{background-image:linear-gradient(90deg,#295473,#2e678b),repeating-linear-gradient(0deg,transparent 0 16px,#b5d8e833 16px 18px);animation:schematicPulse 3.4s ease-in-out infinite alternate}
+.diner-room .neon{animation:neonBuzz 1.8s ease-in-out infinite alternate}
+.theatre-room .footlights{animation:footlightGlow 2.2s ease-in-out infinite alternate}
+.medieval-kitchen .hearth,.tavern-room .hearth{animation:fireGlow 1.7s ease-in-out infinite alternate}
+.jazz-room .spotlight{animation:spotSweep 5.5s ease-in-out infinite alternate;transform-origin:top center}
+.living-room69 .tv:after{animation:tvFlicker 1.6s steps(2,end) infinite}
+.cinema-room .screen{animation:projectorFlicker 2s steps(3,end) infinite}
+@keyframes smokeDrift{0%{transform:translate(-50%,8px) scale(.7);opacity:.2}55%{transform:translate(-35%,-18px) scale(1);opacity:.55}100%{transform:translate(-12%,-42px) scale(1.3);opacity:0}}
+@keyframes riverMove{to{background-position:120px 0}}
+@keyframes lampFlicker{0%,100%{box-shadow:0 0 10px #e7d18388}50%{box-shadow:0 0 20px #ffe59dcc}}
+@keyframes neonBuzz{0%,100%{filter:brightness(.9);opacity:.82}45%{filter:brightness(1.2);opacity:1}48%{opacity:.65}52%{opacity:1}}
+@keyframes onAirBlink{50%{filter:brightness(1.5);box-shadow:0 0 18px #ff626e}}
+@keyframes steamRise{0%{transform:translateY(8px) scaleX(.8);opacity:.2}100%{transform:translateY(-18px) scaleX(1.2);opacity:.7}}
+@keyframes dishSweep{to{transform:rotate(-13deg)}}
+@keyframes screenGlow{to{box-shadow:inset 0 0 28px #7ddcf777,0 0 9px #7ddcf744}}
+@keyframes schematicPulse{to{filter:brightness(1.18)}}
+@keyframes footlightGlow{to{filter:brightness(1.4);box-shadow:0 0 8px #ffd98a}}
+@keyframes fireGlow{to{box-shadow:inset 0 0 34px #f5a04bbb,0 0 12px #d76c2f55}}
+@keyframes spotSweep{to{transform:rotate(7deg)}}
+@keyframes tvFlicker{50%{filter:brightness(1.25) contrast(1.1)}}
+@keyframes projectorFlicker{50%{filter:brightness(1.08);opacity:.94}}
+.time-world[data-time="night"] .fx-layer .world-particle{animation-duration:4.2s}
+@media(prefers-reduced-motion:reduce){.ship-deck .funnel:after,.egypt-scene .river:after,.victorian-row .lamp-post:after,.mainstreet50 .neon,.radio-room .onair,.bath-scene .steam,.apollo-yard .antenna:after,.mission-room .screen,.engineering-room .schematic,.diner-room .neon,.theatre-room .footlights,.medieval-kitchen .hearth,.tavern-room .hearth,.jazz-room .spotlight,.living-room69 .tv:after,.cinema-room .screen{animation:none!important}}
+
+/* === ACHIEVEMENT + COMPLETION PASS 13 === */
+.achievement-list{display:grid;gap:10px;margin-top:14px}.achievement{display:flex;gap:12px;align-items:center;padding:12px;border:1px solid #465270;border-radius:14px;background:#151e36}.achievement>span{font-size:1.45rem;opacity:.55}.achievement div{display:grid;gap:3px}.achievement b{color:#d8e2f4}.achievement small{color:#9eabc2;line-height:1.35}.achievement.earned{border-color:#c7a552;background:linear-gradient(135deg,#2e2b20,#423a26)}.achievement.earned>span{opacity:1;filter:drop-shadow(0 0 7px #ffd97488)}.achievement.earned b{color:#ffe8a8}.completion-panel{padding:14px 15px;border-radius:16px;background:linear-gradient(135deg,#1d2a49,#292e54);border:1px solid #6d6b96}.completion-panel strong{display:block;font:700 1.55rem Georgia,serif;color:#ffe5a4}.completion-panel p{margin:.6rem 0 0;color:#cbd4e4!important}.completion-bar{height:10px;background:#0c1224;border:1px solid #4d5878;border-radius:999px;overflow:hidden;margin-top:9px}.completion-bar i{display:block;height:100%;background:linear-gradient(90deg,#e3ae48,#ffe59e);box-shadow:0 0 10px #ffda7980}.game-action[aria-pressed="true"]{background:linear-gradient(135deg,#d5f1ff,#78bddd);color:#17243d;border-color:#a4ddf5}
+@media(max-width:640px){.achievement{padding:10px}.completion-panel strong{font-size:1.3rem}}
+
+/* === FINAL DESTINATION CONVERSION PASS 14 === */
+.scene-backdrop.homefront{background:linear-gradient(#7590a8 0 43%,#b29b7c 43% 52%,#69645c 52%);box-shadow:inset 0 0 100px #27323e77}
+.scene-backdrop.goldrush{background:linear-gradient(#79a7c5 0 39%,#b58256 39% 55%,#c99c66 55%);box-shadow:inset 0 0 90px #5e402a66}
+.scene-backdrop.depression{background:linear-gradient(#7e8a91 0 42%,#a59682 42% 53%,#65625c 53%);box-shadow:inset 0 0 105px #31343888}
+.scene-backdrop.paris1900{background:linear-gradient(#8ba6bb 0 42%,#c6a785 42% 52%,#7b6b60 52%);box-shadow:inset 0 0 100px #3b394377}
+.scene-backdrop.ageOfSail{background:linear-gradient(#689cc2 0 45%,#537b92 45% 61%,#24455c 61%);box-shadow:inset 0 0 95px #0c243888}
+.scene-backdrop.pompeii{background:linear-gradient(#7fa7bd 0 38%,#a9725b 38% 51%,#9a8067 51%);box-shadow:inset 0 0 100px #503c3677}
+.scene-backdrop.viking{background:linear-gradient(#758fa2 0 43%,#6f8a7a 43% 52%,#48677a 52% 63%,#30465a 63%);box-shadow:inset 0 0 105px #18293888}
+.scene-backdrop.silkroad{background:linear-gradient(#69a1cb 0 43%,#e2b66e 43% 55%,#c28d4d 55%);box-shadow:inset 0 0 95px #74512855}
+.scene-backdrop.seaside{background:linear-gradient(#78b0d1 0 42%,#d6d2b4 42% 50%,#5f92a8 50% 63%,#31586e 63%);box-shadow:inset 0 0 90px #173a4e66}
+.homefront-scene .rowhouse{bottom:24%;height:38%;width:25%;background:#85766c;border:5px solid #5c514b}.homefront-scene .h1{left:5%}.homefront-scene .h2{right:5%;background:#998879}.homefront-scene .factory{left:37%;bottom:24%;width:27%;height:31%;background:#6e7477;border:6px solid #494f52}.homefront-scene .radio-tower{left:50%;bottom:54%;width:4px;height:28%;background:#565d61}
+.goldrush-scene .shop{bottom:24%;width:25%;height:33%;background:#a86c45;border:5px solid #724832}.goldrush-scene .s1{left:5%}.goldrush-scene .s2{right:5%;background:#c2915f}.goldrush-scene .mountain{left:30%;right:30%;bottom:50%;height:27%;clip-path:polygon(0 100%,50% 0,100% 100%);background:#7e5a48}.goldrush-scene .sluice{left:36%;right:36%;bottom:16%;height:9%;background:#7a583f;transform:skewX(-18deg)}
+.depression-scene .store{left:6%;bottom:24%;width:30%;height:36%;background:#8e8172;border:5px solid #5d554c}.depression-scene .job-board{left:45%;bottom:25%;width:18%;height:24%;background:#6b5746;border:5px solid #44362d}.depression-scene .kitchen-sign{right:6%;top:24%;width:22%;height:10%;background:#b69e7b;border:4px solid #6f5d49}
+.paris-scene .facade{bottom:23%;height:43%;background:#9e866f;border:5px solid #6e5d50}.paris-scene .f1{left:3%;width:33%}.paris-scene .f2{right:3%;width:35%;background:#b19778}.paris-scene .metro-sign{left:42%;bottom:30%;width:16%;height:9%;background:#4f7d6a;border:4px solid #263f35;border-radius:50%}.paris-scene .lamp{left:50%;bottom:22%;width:5px;height:31%;background:#2b2f2e}
+.sail-scene .ship{left:17%;bottom:19%;width:48%;height:15%;background:#6b4934;clip-path:polygon(0 0,100% 0,80% 100%,18% 100%)}.sail-scene .mast{bottom:31%;width:5px;height:42%;background:#6a4c36}.sail-scene .m1{left:34%}.sail-scene .m2{left:51%;height:35%}.sail-scene .mast:after{content:"";position:absolute;left:3px;top:8%;width:110px;height:28%;background:#e4d7b5;clip-path:polygon(0 0,100% 50%,0 100%)}.sail-scene .dock{right:0;bottom:16%;width:31%;height:8%;background:#6e5743}
+.pompeii-scene .vesuvius{left:29%;right:29%;bottom:52%;height:30%;clip-path:polygon(0 100%,48% 0,100% 100%);background:#6e574e}.pompeii-scene .villa{bottom:24%;width:27%;height:29%;background:#b39472;border:5px solid #725d4b}.pompeii-scene .v1{left:5%}.pompeii-scene .v2{right:5%;background:#c2a07b}.pompeii-scene .road{left:30%;right:30%;bottom:8%;height:24%;background:repeating-linear-gradient(90deg,#72685e 0 18px,#897d70 18px 36px);transform:perspective(200px) rotateX(56deg)}
+.viking-scene .longhouse{left:7%;bottom:24%;width:34%;height:27%;background:#805d43;border:5px solid #543e31}.viking-scene .longhouse:after{content:"";position:absolute;left:-10%;right:-10%;top:-39%;height:42%;clip-path:polygon(0 100%,50% 0,100% 100%);background:#5d4b3d}.viking-scene .ship{right:8%;bottom:18%;width:37%;height:12%;background:#6d4a36;clip-path:polygon(0 0,100% 0,80% 100%,20% 100%)}.viking-scene .water{left:0;right:0;bottom:0;height:21%;background:linear-gradient(#5f8aa0,#416577)}
+.silkroad-scene .caravanserai{left:30%;right:30%;bottom:24%;height:31%;background:#b88450;border:6px solid #825a36}.silkroad-scene .caravanserai:after{content:"";position:absolute;left:40%;right:40%;bottom:0;height:46%;border-radius:50% 50% 0 0;background:#61442d}.silkroad-scene .dune{bottom:10%;width:45%;height:21%;border-radius:50% 50% 0 0;background:#d8aa62}.silkroad-scene .d1{left:-5%}.silkroad-scene .d2{right:-5%;background:#c99752}.silkroad-scene .palms{left:13%;bottom:25%;width:10px;height:27%;background:#7b5535}
+.seaside-scene .pier{left:14%;right:30%;bottom:21%;height:8%;background:#80624b;box-shadow:0 16px 0 #634b3a}.seaside-scene .sea{left:0;right:0;bottom:0;height:23%;background:linear-gradient(#75aebd,#477a8c)}.seaside-scene .wheel{right:9%;bottom:20%;width:20%;aspect-ratio:1;border:7px solid #d9c7a3;border-radius:50%}.seaside-scene .wheel:before,.seaside-scene .wheel:after{content:"";position:absolute;left:48%;top:0;bottom:0;width:4px;background:#d9c7a3}.seaside-scene .wheel:after{transform:rotate(90deg)}.seaside-scene .hotel{left:5%;bottom:29%;width:24%;height:31%;background:#c9b49b;border:5px solid #7e6b59}
+@media(prefers-reduced-motion:reduce){.sail-scene .mast:after{animation:none!important}}
+
+/* === FULL COMPLETION CEREMONY === */
+.time-world.world-complete .game-header:after{content:"🏆 Keeper of the Twenty Eras";align-self:flex-start;padding:9px 13px;border-radius:999px;background:linear-gradient(135deg,#fff0b0,#d9a94d);color:#2b2130;font-weight:900;box-shadow:0 8px 20px #0005}
+.time-world.world-complete .game-stage{border-color:#ffe39a;box-shadow:0 24px 70px #0009,0 0 0 2px #d6b55c55,0 0 42px #ffd77833}
+.time-world.world-complete .game-header h1{filter:drop-shadow(0 0 14px #ffd77b55)}
+@media(max-width:700px){.time-world.world-complete .game-header:after{font-size:.75rem}}
+
+/* === MULTI-TURN CONVERSATION PASS 15 === */
+.dialogue-transcript{display:grid;gap:9px;margin:14px 0;max-height:min(44vh,360px);overflow:auto;padding-right:4px;scrollbar-width:thin}
+.dialogue-line{max-width:88%;padding:9px 11px;border-radius:14px;border:1px solid #465271;animation:dialogueLineIn .2s ease both}
+.dialogue-line b{display:block;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:3px}
+.dialogue-line p{margin:0!important;line-height:1.48!important}
+.dialogue-line.you{justify-self:end;background:#29385d;border-color:#7184ad}.dialogue-line.you b{color:#bcd3ff}
+.dialogue-line.npc{justify-self:start;background:#252b3d;border-color:#6d6459}.dialogue-line.npc b{color:#ffe1a2}
+.dialogue-prompt{margin:12px 0 9px;padding:10px 12px;border-radius:12px;background:#151e34;border-left:3px solid #dfb45d;color:#e8edf7;line-height:1.5}
+.dialogue-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.dialogue-options button{min-height:44px;text-align:left;border:1px solid #6a7290;background:#1d2948;color:#f2e9d2;border-radius:12px;padding:10px 12px;font-weight:750;cursor:pointer;transition:transform .15s ease,background .15s ease,border-color .15s ease}.dialogue-options button:hover{background:#2d3d65;border-color:#d4b56a;transform:translateY(-1px)}.dialogue-options [data-talk-leave]{grid-column:1/-1;text-align:center;background:#171b2a;color:#b9c2d4}
+@keyframes dialogueLineIn{from{opacity:.2;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:620px){.dialogue-options{grid-template-columns:1fr}.dialogue-options [data-talk-leave]{grid-column:auto}.dialogue-line{max-width:94%}.dialogue-transcript{max-height:38vh}}
+@media(prefers-reduced-motion:reduce){.dialogue-line,.dialogue-options button{animation:none!important;transition:none!important}}
+
+/* === DIRECT DOOR CLICK FIX === */
+.world-object.direct-travel,.world-label.direct-travel-label{cursor:pointer}
+.world-object.direct-travel:hover{filter:drop-shadow(0 0 16px #ffe7a3) drop-shadow(0 8px 8px #0006)!important}
+.world-label.direct-travel-label{appearance:none;font:inherit}
+.world-label.direct-travel-label:not(:disabled):hover{background:#fff0b7;color:#251b29;border-color:#ffe39b;box-shadow:0 0 14px #ffdc7d88}
+.world-label.direct-travel-label:disabled{cursor:not-allowed;opacity:.58}
+
+/* === WALK-TO-DOOR AUTO-ENTRY FIX === */
+.world-object.travel-pending{filter:drop-shadow(0 0 18px #ffe89d) drop-shadow(0 8px 8px #0007)!important}
+.world-object.travel-pending.door .door-frame{box-shadow:0 0 0 3px #ffe59a99,0 0 22px #ffe59aaa,0 8px 14px #0007}
+
+/* === UNIFIED CLICK-TO-INTERACT PASS === */
+.world-object.direct-interact,.world-label.direct-interact-label,.click-collectible{cursor:pointer}
+.world-object.interaction-pending{filter:drop-shadow(0 0 18px #9fdcff) drop-shadow(0 8px 8px #0007)!important}
+.world-object.direct-interact:hover{filter:drop-shadow(0 0 13px #b8e7ff) drop-shadow(0 8px 8px #0006)!important}
+.world-label.direct-interact-label{appearance:none;font:inherit}
+.world-label.direct-interact-label:not(:disabled):hover{background:#dcefff;color:#18253a;border-color:#9fd5ff;box-shadow:0 0 14px #8dcaff66}
+.click-collectible{border:0;background:transparent;padding:0;line-height:1;z-index:8}
+.click-collectible:hover{filter:drop-shadow(0 0 14px #fff2a3);transform:translate(-50%,-50%) scale(1.08)}
+
+/* === NATURAL APPROACH + DESTINATION MARKER PASS === */
+.destination-marker{position:absolute;z-index:11;width:18px;height:18px;border:2px solid #ffe49b;border-radius:50%;transform:translate(-50%,-50%);opacity:0;pointer-events:none;box-shadow:0 0 0 5px #ffe49b22,0 0 14px #ffe49b88}
+.destination-marker.show{animation:destinationPing 1s ease-out both}
+@keyframes destinationPing{0%{opacity:0;transform:translate(-50%,-50%) scale(.65)}20%{opacity:1}100%{opacity:0;transform:translate(-50%,-50%) scale(1.7)}}
+@media(prefers-reduced-motion:reduce){.destination-marker.show{animation:none;opacity:.85}}
+
+/* === FINAL QUICK-START / FLOOR POLISH === */
+.first-run-guide{position:absolute;z-index:60;left:50%;top:50%;transform:translate(-50%,-50%);width:min(430px,88%);padding:18px 19px;border-radius:18px;background:#10182ef2;color:#f7f1df;border:2px solid #d8b66c;box-shadow:0 22px 55px #000a;backdrop-filter:blur(7px)}
+.first-run-guide strong{display:block;font:700 1.35rem Georgia,serif;color:#ffe2a0;margin-bottom:7px}.first-run-guide p{margin:0 0 13px;line-height:1.55;color:#d4dbea}.first-run-guide button{width:100%;min-height:46px;border:1px solid #f0cb77;border-radius:12px;background:linear-gradient(135deg,#ffeaa7,#d8a94e);color:#29213c;font-weight:900;cursor:pointer}.first-run-guide button:hover{filter:brightness(1.06)}
+.game-stage:before{content:"";position:absolute;z-index:3;left:4%;right:4%;bottom:2%;height:9%;border-radius:50%;background:radial-gradient(ellipse at center,#e3c99012,transparent 66%);pointer-events:none}
+@media(max-width:640px){.first-run-guide{padding:15px;width:92%}.first-run-guide strong{font-size:1.15rem}.first-run-guide p{font-size:.86rem}}
+@media(prefers-reduced-motion:reduce){.first-run-guide{backdrop-filter:none}}
