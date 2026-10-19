@@ -13,7 +13,7 @@ const areas=[
 // Wonderworld Featured Adventures 2026 — link to existing independently hosted games.
 const featuredAdventures=[
  {name:'Amberleaf Autumn Adventure',icon:'🍁',description:'Explore the seasonal autumn adventure.',href:'https://amberleaf-autumn-adventure.onrender.com/'},
- {name:'Honeybrook Playable Preview',icon:'🏡',description:'Visit the playable Honeybrook experience.',href:'https://honeybrook-playable-preview.onrender.com/'},
+ {name:'Honeybrook',icon:'🏡',description:'Visit the current Honeybrook experience.',href:'https://honeybrook.onrender.com/'},
  {name:'TypeQuest Academy',icon:'⌨️',description:'Practice typing in the interactive academy.',href:'https://typequest-academy.onrender.com/'},
  {name:'Let’s Go Fishing',icon:'🎣',description:'Enter the fishing adventure.',href:'https://lets-go-fishing.onrender.com/'}
 ];
