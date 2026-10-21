@@ -1,0 +1,33 @@
+/* Photographic interiors, shared by the portal and every interactive room. */
+.room-interior,.room-thumb{background-size:300% 400%;background-repeat:no-repeat;background-color:#30473d}
+.room-interior{width:100%;height:100%;min-height:100%;position:absolute;inset:0}
+.themed-room{aspect-ratio:16/8;max-height:460px;border:0;border-radius:16px;background:#243d32;box-shadow:0 14px 35px #182c2526;margin-bottom:30px}
+.themed-room:after{content:"";position:absolute;inset:35% 0 0;background:linear-gradient(transparent,#0a181bba);pointer-events:none;z-index:0}
+.room-plaque{z-index:1;left:28px;bottom:25px;border:0;border-radius:0;box-shadow:none;padding:0;color:#fffdf5;background:transparent;font-family:Georgia,serif;font-weight:500;font-size:clamp(24px,3.6vw,42px);max-width:73%;text-shadow:0 2px 14px #0008}
+.room-exit,.compact-room .room-exit{z-index:2;left:auto;top:auto;right:22px;bottom:24px;width:auto;height:auto;padding:11px 17px;min-height:44px;border:1px solid #fff8;background:#16382dcc;border-radius:7px;color:#fff;position:absolute;text-shadow:none;font-size:14px}
+.room-exit span{display:none}.room-exit:hover,.room-exit:focus-visible{background:#315646;outline:2px solid #fff}
+.room-thumb{aspect-ratio:16/9;width:100%;max-height:none;height:auto;border:0;display:block;flex-shrink:0}
+.compact-room{height:150px;aspect-ratio:auto}.compact-room .room-plaque{font-size:24px;bottom:22px}
+body.photographic-world{--ink:#26392f;--muted:#59675e;--purple:#315e4c;--line:#d9dfd6;background:#f3f1e9;color:var(--ink)}
+.photographic-world header{background:#fbfaf5;border-bottom:1px solid #d8dcd1;box-shadow:none}
+.photographic-world .shell>aside{background:#eaece3;border-color:#d2d9cd}
+.photographic-world .mark{background:#315b49;box-shadow:none;transform:none;border-radius:12px}.photographic-world .mark span{color:#ae8549}
+.photographic-world .home-link,.photographic-world nav a.active{background:#dce5d7;color:#234a38;box-shadow:none}
+.photographic-world nav a:hover{background:#dfe6d9}.photographic-world .aside-note{background:#e0e3d3;color:#4d5d4d}.photographic-world .aside-note span{color:#8a693b}
+.photographic-world .welcome{background:#faf9f3;border:1px solid #dedfd3;border-radius:12px;box-shadow:none}
+.photographic-world .welcome .sun,.photographic-world .bigicon{display:none}
+.photographic-world .banner{background:#254a3c;border-radius:12px;box-shadow:none}.photographic-world .banner p,.photographic-world .banner .eyebrow{color:#eef2e6}.photographic-world .banner a{color:#264b3c}
+.photographic-world .worldcard,.photographic-world .resource,.photographic-world .office-room,.photographic-world .deck{background:#fffdf7!important;border:1px solid #d6dbcf!important;border-radius:12px;box-shadow:0 5px 18px #22362b0a}
+.photographic-world .worldcard .cardtop{height:43px;background:#fffdf7!important;padding:9px 20px;justify-content:flex-end}.photographic-world .pill{background:#eef0e6;color:#4e624f}
+.photographic-world .cardbody h3{color:#264d3b!important}.photographic-world .cardbody .open,.photographic-world .breadcrumb{color:#315e4c}
+.photographic-world .resource{overflow:hidden}.photographic-world .resource>.room-thumb{width:calc(100% + 42px);margin:-21px -21px 18px}
+.photographic-world .office-tabs,.photographic-world .hubnav{background:#f8f8ee;border-color:#d9ddce}
+.photographic-world .button,.photographic-world button.primary{background:#315e4c;color:white}.photographic-world .button.secondary{background:#e9edde;color:#31533d}
+.photographic-world.photo-standalone{background:#172b25;color:#f4f1e6;--ink:#f4f1e6;--muted:#d6dccf}
+.photo-standalone header{background:#203d31;color:#f4f1e6}.photo-standalone h1,.photo-standalone h2,.photo-standalone h3{color:inherit}.photo-standalone .lead{color:#d6dccf}
+.photo-standalone .resource,.photo-standalone .office-room,.photo-standalone .desk,.photo-standalone .deck,.photo-standalone #wingcards .card,.photo-standalone .office-paper,.photo-standalone .classpaper,.photo-standalone .playbox,.photo-standalone .reader{color:#27392f}
+.photo-standalone .office-tabs,.photo-standalone .hubnav{color:#27392f}.photo-standalone .themed-room{margin-top:20px}
+@media(max-width:700px){.themed-room{aspect-ratio:4/3;border:0;border-radius:12px}.room-plaque{left:18px;bottom:65px;font-size:25px;max-width:87%}.room-exit,.compact-room .room-exit{right:14px;bottom:14px;padding:8px 13px}.compact-room{height:145px}.compact-room .room-plaque{font-size:20px;bottom:62px}.room-thumb{max-height:none}.photographic-world .worldgrid{grid-template-columns:1fr}.photographic-world .cardbody h3{font-size:23px}.photographic-world .worldcard .cardtop{height:38px}.photographic-world .resource>.room-thumb{aspect-ratio:16/8}}
+@media print{.room-thumb,.themed-room{display:none!important}body.photographic-world{background:white;color:black}}
+.photographic-world .banner a.button{background:#f4f2e6;color:#254a3c}.photographic-world .banner a.button:hover{background:white}.wingcard>.room-thumb{margin-bottom:16px;border-radius:8px}.photo-standalone .wingcard{overflow:hidden}
+.photographic-world .craft-art,.photographic-world .hero-art{background-image:url('rooms/photographic-interiors.png');background-size:300% 400%;background-position:50% 33.333%;min-height:300px;border:0;box-shadow:none;overflow:hidden}.photographic-world .craft-art svg,.photographic-world .hero-art svg{visibility:hidden}

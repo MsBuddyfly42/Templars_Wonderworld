@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cover Letter Builder | S3LFM@DE Practice Lab</title><link rel="stylesheet" href="../assets/styles.css"></head><body>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cover Letter Builder | S3LFM@DE Practice Lab</title><link rel="stylesheet" href="../assets/styles.css"><link rel="stylesheet" href="../../../../room-themes.css"><link rel="stylesheet" href="../../../../photographic.css"></head><body>
 <div class="topbar"><div class="brand">S3LFM<span>@</span>DE Solutions • Practice Lab</div><a href="../index.html">← Practice Dashboard</a></div>
 <main class="shell"><div class="hero"><span class="badge">Career Documents</span><h1>Cover Letter Builder</h1><p>Type your own practice information, test the fields, preview it, save it, reset it, and try again.</p></div>
 <div class="notice"><b>Practice copy:</b> Nothing on this page sends to your live business website.</div>
@@ -16,4 +16,4 @@ Lab.$('#previewBtn').onclick=()=>{if(!Lab.validateForm(form))return;const d=Lab.
 Lab.$('#sample').onclick=()=>{Object.entries(sample).forEach(([k,v])=>{const e=form.elements[k];if(e)e.value=v;});Lab.validateForm(form);};
 Lab.$('#save').onclick=()=>Lab.save(form,'s3lfmade-cover-letter');Lab.$('#load').onclick=()=>Lab.load(form,'s3lfmade-cover-letter');
 form.addEventListener('reset',()=>setTimeout(()=>{Lab.clearValidation(form);preview.textContent='Your preview will appear here.';},0));
-</script></body></html>
+</script><script src="../../../../room-themes.js"></script></body></html>
