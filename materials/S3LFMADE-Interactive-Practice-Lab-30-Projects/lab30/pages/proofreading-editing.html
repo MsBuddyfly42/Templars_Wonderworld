@@ -16,4 +16,4 @@ Lab.$('#previewBtn').onclick=()=>{if(!Lab.validateForm(form))return;const d=Lab.
 Lab.$('#sample').onclick=()=>{Object.entries(sample).forEach(([k,v])=>{const e=form.elements[k];if(e)e.value=v;});Lab.validateForm(form);};
 Lab.$('#save').onclick=()=>Lab.save(form,'s3lfmade-proofreading-editing');Lab.$('#load').onclick=()=>Lab.load(form,'s3lfmade-proofreading-editing');
 form.addEventListener('reset',()=>setTimeout(()=>{Lab.clearValidation(form);preview.textContent='Your preview will appear here.';},0));
-</script><script src="../../../../room-themes.js"></script></body></html>
+</script><script src="../../../../room-themes.js"></script><script src="../../../../world-navigation.js"></script></body></html>

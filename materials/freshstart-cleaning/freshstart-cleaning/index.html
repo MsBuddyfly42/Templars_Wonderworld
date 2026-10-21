@@ -23,4 +23,4 @@ function v(id){return document.getElementById(id).value.trim()}function valid(x)
 let estimate=0;function calc(){estimate=(+v('size') + +v('beds') + +v('baths'))*(+v('package'))*(+v('freq'));document.querySelectorAll('.addon:checked').forEach(x=>estimate+=+x.value);document.getElementById('total').textContent=money(estimate)}
 function request(){if(!v('name')||!valid(v('email'))){alert('Enter a name and valid email.');return}show('success',`<strong>Demo request created.</strong><br>Reference: FS-${code()}<br>Estimated total: ${money(estimate)}<br><small>Nothing was transmitted.</small>`)}calc();
 
-</script><script src="../../../room-themes.js"></script></body></html>
+</script><script src="../../../room-themes.js"></script><script src="../../../world-navigation.js"></script></body></html>

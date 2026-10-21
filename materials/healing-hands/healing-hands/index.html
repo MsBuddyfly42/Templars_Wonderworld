@@ -35,4 +35,4 @@ function refill(){let id=v('rxPet'),med=v('med');if(!id||!med){alert('Choose a p
 function lookup(){let c=v('lookup').toUpperCase(),r=requests[c];show('lookupResult',r?`<strong>${safe(r.type)}</strong><br>Pet: ${safe(r.pet)}<br>Details: ${safe(r.details)}<br>Status: <strong>${safe(r.status)}</strong>`:'Demo request not found. Create a request during this browser session first.')}
 function show(id,h){let x=document.getElementById(id);x.style.display='block';x.innerHTML=h}function v(id){return document.getElementById(id).value.trim()}function code(){let c='ABCDEFGHJKLMNPQRSTUVWXYZ23456789',s='';for(let i=0;i<6;i++)s+=c[Math.floor(Math.random()*c.length)];return s}function safe(x){return String(x).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;')}
 let d=new Date(),el=document.getElementById('apptDate');el.min=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-</script><script src="../../../room-themes.js"></script></body></html>
+</script><script src="../../../room-themes.js"></script><script src="../../../world-navigation.js"></script></body></html>

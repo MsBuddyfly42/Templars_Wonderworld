@@ -24,4 +24,4 @@ function afford(){let x=Math.max(0,(+v('income')||0)*(+v('pct')||.3)-(+v('debt')
 function apply(){if(!v('appName')||!valid(v('appEmail'))){alert('Enter a name and valid email.');return}show('appSuccess',`Demo application: <strong>HK-${code()}</strong><br>${safe(v('unit'))}<br><small>No application was transmitted.</small>`)}
 function maintenance(){if(!v('mxnote')){alert('Add a brief maintenance description.');return}show('mxSuccess',`Demo maintenance request: <strong>MX-${code()}</strong><br>Status: Received locally in this prototype.`)}renderHomes(homes);afford();
 
-</script><script src="../../../room-themes.js"></script></body></html>
+</script><script src="../../../room-themes.js"></script><script src="../../../world-navigation.js"></script></body></html>

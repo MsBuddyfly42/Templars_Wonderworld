@@ -119,4 +119,4 @@ $('#ops-list').addEventListener('click',e=>{const button=e.target.closest('[data
 $('#how').addEventListener('click',()=>$('#how-modal').classList.add('open'));$('#close-how').addEventListener('click',()=>$('#how-modal').classList.remove('open'));$('#how-start').addEventListener('click',()=>{$('#how-modal').classList.remove('open');startShift()});$('#again').addEventListener('click',()=>{$('#results-modal').classList.remove('open');startShift()});$('#close-results').addEventListener('click',()=>$('#results-modal').classList.remove('open'));document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.querySelectorAll('.overlay.open').forEach(el=>el.classList.remove('open'))}});window.addEventListener('beforeunload',()=>clearInterval(tickTimer));update();if(location.hash==='#how')$('#how-modal').classList.add('open');
 })();
 </script>
-<script src="room-themes.js"></script></body></html>
+<script src="room-themes.js"></script><script src="world-navigation.js"></script></body></html>

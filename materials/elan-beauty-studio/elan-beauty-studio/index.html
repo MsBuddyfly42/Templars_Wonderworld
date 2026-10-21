@@ -26,4 +26,4 @@ function book(){let n=v('name'),e=v('email'),d=v('date');if(!n||!valid(e)||!d){a
 function manage(){let c=v('lookup').toUpperCase(),b=bookings[c];if(!b){show('manageResult','Demo booking not found in this browser session.');return}show('manageResult',`<strong>${safe(b.name)}</strong><br>${safe(b.service)}<br>${b.date} • ${safe(b.time)}<br>Status: ${b.status}<br><button class="btn ghost" onclick="cancelBooking('${c}')">Cancel Demo Booking</button>`)}
 function cancelBooking(c){bookings[c].status='Cancelled';manage()}
 
-</script><script src="../../../room-themes.js"></script></body></html>
+</script><script src="../../../room-themes.js"></script><script src="../../../world-navigation.js"></script></body></html>
