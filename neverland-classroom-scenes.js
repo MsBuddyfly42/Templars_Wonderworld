@@ -1,6 +1,6 @@
 /* Subject-specific photography for the academy; activity content and save data are unchanged. */
 (()=>{'use strict';const base=new URL('.',document.currentScript.src);const scenes={
-coding:'neverland-classroom',practice:'neverland-classroom',projects:'neverland-classroom',
+basic:'neverland-basic-classroom',mythology:'neverland-mythology-classroom',coding:'neverland-classroom',practice:'neverland-classroom',projects:'neverland-classroom',
 word:'neverland-writing-room',writing:'neverland-writing-room',reading:'neverland-writing-room',
 excel:'neverland-numbers-room',powerpoint:'neverland-presentation-room',music:'neverland-presentation-room',events:'neverland-presentation-room',
 access:'neverland-records-room',reference:'neverland-records-room',
