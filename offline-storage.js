@@ -8,9 +8,10 @@ async function wonderworldOfflineFetch(path, options) {
     if(!saved||typeof saved!=='object'||Array.isArray(saved))throw new Error('Invalid saved data');
     if(options?.method==='POST') {
       const b=JSON.parse(options.body),date=new Date().toISOString();
-      if(isPassport){saved[b.id]={title:b.title,score:b.score,total:b.total,attempts:Number(saved[b.id]?.attempts||0)+1,date};}
+      if(isPassport){saved[b.id]={title:b.title,score:b.score,total:b.total,bestScore:Math.max(Number(saved[b.id]?.bestScore)||0,Number(saved[b.id]?.score)||0,b.score),attempts:Number(saved[b.id]?.attempts||0)+1,date};}
       else{saved[b.resourceId]={position:b.position,completed:b.completed,updated_at:date};}
       localStorage.setItem(key,JSON.stringify(saved));
+      window.dispatchEvent(new CustomEvent('neverland:grades-updated'));
       return response({saved:true,date,updatedAt:date});
     }
     if(isPassport)return response({stamps:Object.entries(saved).map(([id,r])=>({activity_id:id,title:r.title,score:r.score,total:r.total,attempts:r.attempts,updated_at:r.date}))});

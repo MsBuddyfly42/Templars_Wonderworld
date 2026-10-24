@@ -3,7 +3,7 @@ const room=document.querySelector('#room'),STORE_KEY='templars-classroom-challen
 const h=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let state={version:1,attempts:[],drafts:{}},saveOK=true,current=null,questionIndex=0,showGrade=true;
 try{const s=JSON.parse(localStorage.getItem(STORE_KEY)||'null');if(s&&s.version===1&&Array.isArray(s.attempts)&&s.drafts)state=s}catch{saveOK=false}
-function save(){try{localStorage.setItem(STORE_KEY,JSON.stringify(state));saveOK=true}catch{saveOK=false}document.querySelector('#storage-status').textContent=saveOK?'Your scores and unfinished rounds are saved in this browser. Export a backup from My report card.':'This browser could not save results. They remain in this open session; export a backup from My report card.'}
+function save(){try{localStorage.setItem(STORE_KEY,JSON.stringify(state));saveOK=true}catch{saveOK=false}window.dispatchEvent(new CustomEvent('neverland:grades-updated'));document.querySelector('#storage-status').textContent=saveOK?'Your scores and unfinished rounds are saved in this browser. Export a backup from My report card.':'This browser could not save results. They remain in this open session; export a backup from My report card.'}
 function moduleFor(id){return CLASSROOMS.find(m=>m.id===id)}
 function gradeFor(percent){return percent>=90?'A':percent>=80?'B':percent>=70?'C':percent>=60?'D':'F'}
 function calculate(m,answers){const score=m.questions.reduce((n,q)=>n+(answers[q.id]===q.correct?1:0),0);return {score,total:m.questions.length,percent:score/m.questions.length*100,unanswered:m.questions.filter(q=>!Number.isInteger(answers[q.id])).length}}
