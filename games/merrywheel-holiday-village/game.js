@@ -1056,9 +1056,10 @@ const Save = {
   snapshot() { const o = { v: 1 }; for (const k of SAVE_KEYS) o[k] = S[k]; return o; },
   async load() { try { const local=JSON.parse(localStorage.getItem('merrywheel-village-save-v1')||'null');if(local&&local.v===1&&local.name)return local; }catch{} try { const r = await fetch(this.base + '/api/save', { headers: this.headers() }); if (!r.ok) throw 0; return (await r.json()).save; } catch (e) { return null; } },
   async push(force) {
-    if (S.scene === 'title' || this.busy) return;
+    if (S.scene === 'title') return;
     const snap = this.snapshot(), key = JSON.stringify(snap); if (!force && key === this.last) return;
-    this.busy = true;let localSaved=false;try{localStorage.setItem('merrywheel-village-save-v1',key);localSaved=true;this.last=key;ind('Saved in this browser');}catch{}
+    let localSaved=false;try{localStorage.setItem('merrywheel-village-save-v1',key);localSaved=true;this.last=key;ind('Saved in this browser');}catch{}
+    if(this.busy)return;this.busy=true;
     try { const r = await fetch(this.base + '/api/save', { method: 'POST', headers: this.headers(), body: key, keepalive: true }); if (!r.ok) throw 0; this.last = key; ind('Saved'); }
     catch (e) { if(!localSaved)ind('Saving unavailable — export a backup', true);else ind('Saved in this browser'); }
     this.busy = false;
