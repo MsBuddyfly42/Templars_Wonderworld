@@ -640,7 +640,7 @@ function openStreet(id) {
     S.favor[st.m] -= 4; const t = pick(TREATS); S.coins += 25; S.treats.push(t); updateHUD();
     setTimeout(() => modal(`<p class="kicker">${esc(famOf(st).name)}</p><h2>A gift, for being on our side</h2><p>${esc(host.name)} presses a little parcel into your hands: <b>25 coins</b> and a <b>${esc(t)}</b>. "You always know who's right," they whisper.</p>`), 300);
   }
-  const hostEl = $('#street-host');
+  const hostEl = $('#street-host');hostEl.setAttribute('role','button');hostEl.tabIndex=0;hostEl.setAttribute('aria-label','Speak with '+host.name);hostEl.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();hostEl.click();}};
   hostEl.innerHTML = personSVG({ w: 110, color: host.color, ...host.look });
   hostEl.onclick = () => {
     $$('#street-host .bubble').forEach(b => b.remove());
@@ -1049,21 +1049,21 @@ function jubilee(real) {
 
 /* ---------- save ---------- */
 const API = 'port/8001';
-const SAVE_KEYS = ['name', 'y', 'doy', 'slot', 'coins', 'fund', 'stamps', 'skills', 'bag', 'treats', 'upgrades', 'bellDay', 'hourFree', 'hourDay', 'secTries', 'jubilee', 'best', 'snow', 'snowUser', 'notes', 'found', 'favor', 'sulk', 'sulkBy', 'smug', 'harmony', 'argDay', 'argId', 'argDone', 'kidArgDay', 'kidArgId', 'kidArgDone', 'trust', 'pout', 'fr', 'talked', 'gave', 'keeps'];
+const SAVE_KEYS = ['name', 'y', 'doy', 'slot', 'coins', 'fund', 'stamps', 'skills', 'bag', 'treats', 'upgrades', 'bellDay', 'hourFree', 'hourDay', 'secTries', 'jubilee', 'best', 'snow', 'snowUser', 'notes', 'found', 'favor', 'sulk', 'sulkBy', 'smug', 'harmony', 'argDay', 'argId', 'argDone', 'kidArgDay', 'kidArgId', 'kidArgDone', 'trust', 'pout', 'fr', 'talked', 'gave', 'keeps', 'livingWork'];
 const Save = {
   base: API.startsWith('__PORT') ? 'http://localhost:8001' : API, last: '', busy: false,
   headers() { const h = { 'Content-Type': 'application/json' }; if (this.base.includes('localhost')) h['X-Save-Id'] = 'local-test'; return h; },
   snapshot() { const o = { v: 1 }; for (const k of SAVE_KEYS) o[k] = S[k]; return o; },
-  async load() { try { const r = await fetch(this.base + '/api/save', { headers: this.headers() }); if (!r.ok) throw 0; return (await r.json()).save; } catch (e) { return null; } },
+  async load() { try { const local=JSON.parse(localStorage.getItem('merrywheel-village-save-v1')||'null');if(local&&local.v===1&&local.name)return local; }catch{} try { const r = await fetch(this.base + '/api/save', { headers: this.headers() }); if (!r.ok) throw 0; return (await r.json()).save; } catch (e) { return null; } },
   async push(force) {
     if (S.scene === 'title' || this.busy) return;
     const snap = this.snapshot(), key = JSON.stringify(snap); if (!force && key === this.last) return;
-    this.busy = true;
+    this.busy = true;let localSaved=false;try{localStorage.setItem('merrywheel-village-save-v1',key);localSaved=true;this.last=key;ind('Saved in this browser');}catch{}
     try { const r = await fetch(this.base + '/api/save', { method: 'POST', headers: this.headers(), body: key, keepalive: true }); if (!r.ok) throw 0; this.last = key; ind('Saved'); }
-    catch (e) { ind('Not saving right now', true); }
+    catch (e) { if(!localSaved)ind('Saving unavailable — export a backup', true);else ind('Saved in this browser'); }
     this.busy = false;
   },
-  async wipe() { try { await fetch(this.base + '/api/save', { method: 'DELETE', headers: this.headers() }); } catch (e) { } this.last = ''; },
+  async wipe() { try{const prior=localStorage.getItem('merrywheel-village-save-v1');if(prior)localStorage.setItem('merrywheel-village-before-reset',prior);localStorage.removeItem('merrywheel-village-save-v1');}catch{} try { await fetch(this.base + '/api/save', { method: 'DELETE', headers: this.headers() }); } catch (e) { } this.last = ''; },
   apply(d) {
     for (const k of SAVE_KEYS) if (d[k] !== undefined) S[k] = d[k];
     for (const k of ['y', 'doy', 'slot', 'coins', 'fund', 'bellDay', 'hourFree', 'hourDay', 'secTries', 'snow', 'harmony', 'argDay', 'argDone', 'kidArgDay', 'kidArgDone', 'trust']) S[k] = Math.round(Number(S[k]) || 0);
@@ -1120,5 +1120,6 @@ $('#player-name').addEventListener('keydown', e => { if (e.key === 'Enter') $('#
   };
 })();
 
+window.Merrywheel={state:S,snapshot:()=>Save.snapshot(),save:()=>Save.push(true),openStreet,hostOf,places:ALL_STREETS,go};
 window.__S = S; window.__go = go; window.__next = nextDays;
 })();
