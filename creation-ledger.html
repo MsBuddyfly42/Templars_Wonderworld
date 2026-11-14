@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Creation Improvement Ledger | Templar's Wonderworld</title>
+<meta name="description" content="Track every Wonderworld creation, improvement, source change, and the connected coding lesson.">
+<link rel="stylesheet" href="creation-ledger.css">
+<script src="creation-ledger.js" defer></script></head>
+<body><header class="ledger-top">
+<a href="index.html" class="home">✦ Wonderworld home</a><div><p>THE CREATION WORKSHOP</p><h1>🌈 Creation Improvement Ledger</h1>
+<p>Every upgrade has a record. Every source change has a learning opportunity.</p></div>
+<a href="index.html#area/Classrooms" class="classroom-link">🎓 My classrooms</a></header>
+<main>
+<section class="overview" aria-label="Project overview"><div><b id="total">—</b><span>Creations tracked</span></div><div><b id="updates">—</b><span>Recorded source updates</span></div><div><b id="lessons">—</b><span>Auto-generated coding lesson records</span></div><div><b id="review">—</b><span>Updates needing manual review</span></div></section>
+<section class="guide"><h2>How it works</h2><p><strong>Step 1:</strong> Select a creation or search for it. <strong>Step 2:</strong> Inspect recorded source changes and open the attached coding lesson. <strong>Step 3:</strong> Add personal plans, checklists, and learning notes. <strong>Step 4:</strong> export your notes as a backup. Source history is periodically rebuilt from accessible GitHub repositories; it never claims an unverified deployment.</p>
+<p class="important"><strong>Important:</strong> Your notes save in this browser unless you export them. Automatically generated lessons explain the changed code, but still require human review for completeness. Source changes in private repositories are not published by this dashboard.</p></section>
+<section class="toolbar"><label>Find a creation<input id="search" type="search" placeholder="Fishing, Honeybrook, coding…"></label>
+<label>Category<select id="category"><option value="">All categories</option></select></label>
+<label>Review state<select id="status"><option value="">All states</option><option value="hasUpdates">Has recorded updates</option><option value="needsReview">Needs lesson review</option><option value="noUpdates">No recorded updates</option></select></label>
+<button id="export" type="button">⬇ Export personal ledger notes</button>
+<label class="import">⬆ Import personal notes<input id="import" type="file" accept="application/json,.json"></label></section>
+<div class="layout"><section class="project-panel"><h2>My creations</h2><p id="count" aria-live="polite"></p><div id="projects" class="projects" aria-label="Creation list"></div></section>
+<section id="detail" class="detail" aria-live="polite"><p>Select a creation to inspect its ledger and connected coding classroom.</p></section></div>
+<section class="how"><h2>What a coding lesson contains</h2><div class="steps"><article>🔍 <strong>What changed?</strong><p>Repository, commit, files and recorded date.</p></article><article>💻 <strong>What type of code?</strong><p>HTML, CSS, JavaScript, Python and other file types.</p></article><article>🧩 <strong>How does it work?</strong><p>Actual changed-code excerpts with a beginner-friendly explanation.</p></article><article>🧪 <strong>Practice and verify</strong><p>A task you can try, then compare against the actual project source and tests.</p></article></div></section>
+</main><footer>Templar's Wonderworld · Coding Classroom & Creation Improvement Ledger · Changes never alter saved game profiles.</footer>
+</body></html>
